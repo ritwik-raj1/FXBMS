@@ -14,7 +14,7 @@ public class App extends Application {
         stage.setScene(scene);
         //Title Bar Customization
         stage.setResizable(false);
-        Image icon = new Image(getClass().getResourceAsStream("/Images/title.jpg"));
+        Image icon = new Image(getClass().getResourceAsStream("/Images/bank.png"));
         stage.getIcons().add(icon);
         stage.setTitle("FINANCIAL HUB MANAGER");
         //Title Bar Customization
