@@ -5,6 +5,4 @@ public enum SignupMenuOptions {
     FORM2,
     FORM3,
 
-    NEXTFORM,
-    NEXTFORM2
 }
