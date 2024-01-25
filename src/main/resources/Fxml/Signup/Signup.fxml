@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx"
+<BorderPane fx:id="signup_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml">
 
     <left>
-        <fx:include source="ClientMenu.fxml"/>
+        <fx:include source="SignupMenu.fxml"/>
     </left>
 
     <center>
-        <fx:include source="Dashboard.fxml"/>
+        <fx:include source="Signup_Form1.fxml"/>
     </center>
 
 </BorderPane>

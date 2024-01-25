@@ -16,10 +16,16 @@ module com.ritwik.fxbms {
     requires mysql.connector.j;
 
     opens com.ritwik.fxbms to javafx.fxml;
+    opens com.ritwik.fxbms.Controllers to javafx.fxml;
+    opens com.ritwik.fxbms.Controllers.Client to javafx.fxml;
+    opens com.ritwik.fxbms.Models to javafx.fxml;
+    opens com.ritwik.fxbms.Views to javafx.fxml;
+    opens com.ritwik.fxbms.Controllers.Signup to javafx.fxml;
+
     exports com.ritwik.fxbms;
     exports com.ritwik.fxbms.Controllers;
-    exports com.ritwik.fxbms.Controllers.Admin;
     exports com.ritwik.fxbms.Controllers.Client;
     exports com.ritwik.fxbms.Models;
     exports com.ritwik.fxbms.Views;
+    exports com.ritwik.fxbms.Controllers.Signup;
 }

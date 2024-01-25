@@ -21,7 +21,7 @@
 /* Accounts View Section */
 .accounts_view {
     -fx-background-color: #FFFFFF;
-    -fx-background-radius: 10 0 0 10;
+    -fx-background-radius: 10 10 10 10;
     -fx-padding: 10 0 10 0;
     -fx-alignment: center;
     -fx-border-width: 0 1 0 0;

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/ClientMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupMenuController">
+    <AnchorPane prefHeight="730.0" prefWidth="160.0" styleClass="left_container">
+        <VBox prefHeight="80.0" prefWidth="160.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <FontAwesomeIconView glyphName="BANK" size="30" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Secure-BMS" />
+         <Line endX="100.0" startX="-36.72732162475586" startY="-0.20710846781730652">
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </Line>
+        </VBox>
+        <VBox layoutY="103.0" prefHeight="420.0" prefWidth="160.0" style="-fx-padding: 20;" styleClass="menu_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="103.0">
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SIGNUP FORM">
+            <font>
+               <Font name="Cambria Bold" size="18.0" />
+            </font>
+         </Text>
+            <Button fx:id="form1_btn" mnemonicParsing="false" style="-fx-alignment: CENTER;" text="FORM 1">
+            <graphic>
+               <FontAwesomeIconView glyphName="LIST" size="20" />
+            </graphic>
+            <VBox.margin>
+               <Insets top="15.0" />
+            </VBox.margin>
+            </Button>
+            <Button fx:id="form2_btn" mnemonicParsing="false" style="-fx-alignment: CENTER;" text="FORM 2">
+            <graphic>
+               <FontAwesomeIconView glyphName="LIST" size="20" />
+            </graphic>
+            </Button>
+            <Button fx:id="form3_btn" mnemonicParsing="false" style="-fx-alignment: CENTER;" text="FORM 3">
+                <graphic>
+                    <FontAwesomeIconView glyphName="LIST" size="20" />
+                </graphic>
+            </Button>
+        </VBox>
+        <VBox prefHeight="147.0" prefWidth="131.0" styleClass="report_container" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Need Help?" />
+            <Label prefHeight="61.0" prefWidth="131.0" text="Contact Us For Any Query Regarding Registration..." />
+            <Button fx:id="report_btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="93.0" text="Contact">
+                <graphic>
+                    <FontAwesomeIconView glyphName="PLUS" size="12" />
+                </graphic>
+            </Button>
+        </VBox>
+    </AnchorPane>
+</VBox>

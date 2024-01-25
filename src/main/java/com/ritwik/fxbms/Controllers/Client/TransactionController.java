@@ -1,16 +1,18 @@
 package com.ritwik.fxbms.Controllers.Client;
 
 import javafx.application.Application;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
-public class TransactionController extends Application {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class TransactionController implements Initializable {
+    public ListView transaction_listview;
 
     @Override
-    public void start(Stage primaryStage) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

@@ -16,7 +16,8 @@ public class LoginController implements Initializable {
     public Label l1, l2, l3;
     public TextField tf1;
     public PasswordField pf2;
-    public Button login_btn, b2, b3;
+    public Button b2, b3;
+    public Button login_btn;
 
     //Email Authentication
     public Label l4;
@@ -35,12 +36,21 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         login_btn.setOnAction(event -> onLogin());
+        b3.setOnAction(event -> onSignup());
     }
 
     private void onLogin() {
-        Stage stage = (Stage) b3.getScene().getWindow();
+        Stage stage = (Stage) l1.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         // Example: Show the Client Window
         Model.getInstance().getViewFactory().showClientWindow();
     }
+
+    private void onSignup() {
+        Stage stage = (Stage) l1.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        // Example: Show the Signup Window
+        Model.getInstance().getViewFactory().showSignupWindow();
+    }
+
 }
