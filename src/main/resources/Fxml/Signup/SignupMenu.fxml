@@ -13,7 +13,7 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="180.0" styleClass="main_menu_container" stylesheets="@../../Styles/ClientMenu.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupMenuController">
     <AnchorPane prefHeight="730.0" prefWidth="160.0" styleClass="left_container">
         <VBox prefHeight="80.0" prefWidth="160.0" styleClass="title_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <FontAwesomeIconView glyphName="BANK" size="30" />
+            <FontAwesomeIconView glyphName="BANK" size="50" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Secure-BMS" />
          <Line endX="100.0" startX="-36.72732162475586" startY="-0.20710846781730652">
             <VBox.margin>

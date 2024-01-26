@@ -9,10 +9,10 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="740.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupForm1Controller">
-    <Label fx:id="form_number" layoutX="20.0" style="-fx-font-size: 38; -fx-font-weight: bold;" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
+    <Label fx:id="form_number" layoutX="20.0" style="-fx-font-size: 38; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="1234" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
     </Label>
     <Label layoutX="104.0" layoutY="20.0" style="-fx-font-size: 38; -fx-font-weight: bold;" text="APPLICATION FORM NO." AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="20.0" />
-    <Label layoutX="232.0" layoutY="83.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Page 1: Personal Details" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" />
+    <Label layoutX="232.0" layoutY="83.0" prefHeight="36.0" prefWidth="287.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 1: Personal Details" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="213.0" />
     <Label layoutX="59.0" layoutY="140.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Name:" AnchorPane.leftAnchor="60.0" />
     <TextField fx:id="name_fld" layoutX="300.0" layoutY="140.0" prefHeight="30.0" prefWidth="400.0" style="-fx-font-size: 14;" />
     <Label layoutX="56.0" layoutY="190.0" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Father's Name:" AnchorPane.leftAnchor="60.0" />

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="750.0" prefWidth="740.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupForm2Controller">
-    <Label layoutX="218.0" layoutY="68.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 2: Additional Details" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="217.1111111111111" />
+    <Label layoutX="218.0" layoutY="63.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 2: Additional Details" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="217.1111111111111" />
     <Label layoutX="56.0" layoutY="144.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Religion:" AnchorPane.leftAnchor="60.0" />
     <ComboBox fx:id="religion_cbox" layoutX="350.0" layoutY="142.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
     <Label layoutX="57.0" layoutY="200.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Category:" AnchorPane.leftAnchor="60.0" />
@@ -32,5 +32,5 @@
     <RadioButton fx:id="existing_r2" layoutX="460.0" layoutY="616.0" style="-fx-font-size: 14;" text="No" />
     <Button fx:id="submit_form2_btn" layoutX="580.0" layoutY="656.0" style="-fx-font-size: 20; -fx-background-color: black; -fx-text-fill: white;" text="Submit" />
    <Text layoutX="238.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Form No." AnchorPane.leftAnchor="238.0" />
-   <Label fx:id="form_number" layoutX="385.0" layoutY="3.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Hello" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="5.0" />
+   <Label fx:id="form_number" layoutX="385.0" layoutY="3.0" style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="Hello" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="5.0" />
 </AnchorPane>

@@ -14,6 +14,7 @@ module com.ritwik.fxbms {
     requires de.jensd.fx.glyphs.fontawesome;
     requires java.sql;
     requires mysql.connector.j;
+    requires java.mail;
 
     opens com.ritwik.fxbms to javafx.fxml;
     opens com.ritwik.fxbms.Controllers to javafx.fxml;

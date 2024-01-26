@@ -11,7 +11,7 @@
 <AnchorPane prefHeight="750.0" prefWidth="740.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupForm3Controller">
     <Label layoutX="150.0">
     </Label>
-    <Label layoutX="232.0" layoutY="75.0" style="-fx-font-size: 22; -fx-font-weight: bold;" text="Page 3: Account Details" />
+    <Label layoutX="232.0" layoutY="75.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 3: Account Details" />
     <Label layoutX="100.0" layoutY="140.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Account Type:" />
     <RadioButton fx:id="acc_type_r1" layoutX="100.0" layoutY="180.0" style="-fx-font-size: 16;" text="Saving Account" />
     <RadioButton fx:id="acc_type_r2" layoutX="350.0" layoutY="180.0" style="-fx-font-size: 16;" text="Fixed Deposit Account" />
@@ -37,7 +37,7 @@
          <Font name="System Bold" size="12.0" />
       </font></Button>
    <Text layoutX="248.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Form No." AnchorPane.leftAnchor="248.0" AnchorPane.topAnchor="15.0" />
-   <Label fx:id="form_number" layoutX="395.0" layoutY="13.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Hello" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="15.0" />
+   <Label fx:id="form_number" layoutX="395.0" layoutY="13.0" style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="Hello" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="15.0" />
    <Button fx:id="login_btn" layoutX="362.0" layoutY="692.0" prefHeight="30.0" prefWidth="140.0" style="-fx-font-size: 20; -fx-background-color: black; -fx-text-fill: white;" text="Login" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="180.0">
       <font>
          <Font name="System Bold" size="12.0" />
