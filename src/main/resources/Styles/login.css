@@ -1,0 +1,7 @@
+.Button {
+    -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 6);
+}
+
+.Button:hover {
+    -fx-cursor: hand;
+}

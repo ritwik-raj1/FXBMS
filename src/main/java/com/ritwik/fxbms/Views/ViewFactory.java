@@ -112,21 +112,22 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Client.fxml"));
         ClientController clientController = new ClientController();
         loader.setController(clientController);
-        createStage(loader);
+        createStage(loader, true);
     }
     public void showSignupWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Signup/Signup.fxml"));
         SignupController signupController = new SignupController();
         loader.setController(signupController);
-        createStage(loader);
+        createStage(loader, true);
     }
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
-        createStage(loader);
+        Stage stage = new Stage();
+        createStage(loader, false);
     }
 
-    private void createStage(FXMLLoader loader) {
+    private void createStage(FXMLLoader loader, boolean resizable) {
         Scene scene = null;
         try {
             scene = new Scene(loader.load());
@@ -138,6 +139,7 @@ public class ViewFactory {
         stage.setTitle("FINANCIAL HUB MANAGER");
         Image icon = new Image(getClass().getResourceAsStream("/Images/bank2.png"));
         stage.getIcons().add(icon);
+        stage.setResizable(resizable);
         stage.show();
     }
 

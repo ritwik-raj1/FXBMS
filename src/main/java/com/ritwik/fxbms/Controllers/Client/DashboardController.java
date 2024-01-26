@@ -1,5 +1,6 @@
 package com.ritwik.fxbms.Controllers.Client;
 
+import com.ritwik.fxbms.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
@@ -23,6 +24,10 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Get the account number from the Model
+        String accountNumber = Model.getInstance().getAccountNumber();
 
+        // Set the account number in the acc_num label
+        acc_num.setText(accountNumber);
     }
 }

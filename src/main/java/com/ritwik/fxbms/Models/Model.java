@@ -5,6 +5,7 @@ import com.ritwik.fxbms.Views.ViewFactory;
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
+    private String accountNumber; // New variable to store account number
 
     private Model() {
         this.viewFactory = new ViewFactory();
@@ -19,7 +20,11 @@ public class Model {
         return viewFactory;
     }
 
-//    public String setCurrentUserAccount(String pin) {
-//        return pin;
-//    }
+    public synchronized String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public synchronized void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
 }

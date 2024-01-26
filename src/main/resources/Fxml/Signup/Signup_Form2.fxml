@@ -21,9 +21,9 @@
     <Label layoutX="60.0" layoutY="375.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Occupation:" AnchorPane.leftAnchor="60.0" />
     <ComboBox fx:id="occupation_cbox" layoutX="350.0" layoutY="373.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
     <Label layoutX="62.0" layoutY="439.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="PAN Number:" AnchorPane.leftAnchor="60.0" />
-    <TextField fx:id="pan_fld" layoutX="350.0" layoutY="437.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
-    <Label layoutX="57.0" layoutY="499.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Aadhar Number:" AnchorPane.leftAnchor="60.0" />
-    <TextField fx:id="aadhaar_fld" layoutX="350.0" layoutY="497.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <TextField fx:id="pan_fld" layoutX="350.0" layoutY="437.0" prefHeight="30.0" prefWidth="320.0" promptText="Valid Pan Number" style="-fx-font-size: 14;" />
+    <Label layoutX="57.0" layoutY="499.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Aadhaar Number:" AnchorPane.leftAnchor="60.0" />
+    <TextField fx:id="aadhaar_fld" layoutX="350.0" layoutY="497.0" prefHeight="30.0" prefWidth="320.0" promptText="Aadhaar Number" style="-fx-font-size: 14;" />
     <Label layoutX="58.0" layoutY="558.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Senior Citizen:" AnchorPane.leftAnchor="60.0" />
     <RadioButton fx:id="senior_r1" layoutX="347.0" layoutY="562.0" style="-fx-font-size: 14;" text="Yes" />
     <RadioButton fx:id="senior_r2" layoutX="460.0" layoutY="562.0" style="-fx-font-size: 14;" text="No" />

@@ -1,19 +1,32 @@
 .transaction_container {
     -fx-background-color: #EEEEEE;
+    /*-fx-background-image: url("atm1.jpg");*/
+    /*-fx-background-size: 100% 100%;*/
 }
 
 .transaction_container Text {
-    -fx-fill: #000000;
+    -fx-fill: #dda15e;
     -fx-font-size: 2.5em;
-    -fx-font-family: "Calibri Light";
+    -fx-font-family: "Calibri";
+    -fx-font-weight: bold;
 }
 
 .transaction_container .list-view{
-    -fx-background-color: #EEEEEE;
+    -fx-background-radius: 10;
+    -fx-border-width: 5;
+    -fx-border-color: #023047;
+    -fx-border-radius: 10;
     -fx-padding: 10;
+    -fx-font-size: 20;
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
 }
 
-.transaction_container .list-cell {
-    -fx-background-color: #EEEEEE;
-    -fx-pref-width: 800;
+
+.transaction_container .Button {
+    -fx-background-color: linear-gradient(to right, #f4a261, #e9c46a);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
+    -fx-text-fill: #FFFFFF;
+}
+.transaction_container Button:hover {
+    -fx-cursor: hand;
 }

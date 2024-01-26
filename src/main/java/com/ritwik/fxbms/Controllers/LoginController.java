@@ -60,6 +60,8 @@ public class LoginController implements Initializable {
         boolean isValidLogin = validateLogin(accountNumber, pin, email);
 
         if (isValidLogin) {
+            // Set the account number in the Model
+            Model.getInstance().setAccountNumber(accountNumber);
             // Check if OTP verification is mandatory
             if (otpVerified) {
                 Stage stage = (Stage) signup_btn.getScene().getWindow();

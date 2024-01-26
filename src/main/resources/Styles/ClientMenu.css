@@ -18,14 +18,14 @@
     -fx-padding: 10;
 }
 
-.title_container FontAwesomeIconView {
-    -fx-fill: #132A13;
-}
+/*.title_container FontAwesomeIconView {*/
+/*    -fx-fill: #132A13;*/
+/*}*/
 
-.title_container Text {
-    -fx-fill: #000000;
-    -fx-font-size: 2em;
-}
+/*.title_container Text {*/
+/*    -fx-fill: #000000;*/
+/*    -fx-font-size: 2em;*/
+/*}*/
 
 /* Navigation Section */
 .menu_container {

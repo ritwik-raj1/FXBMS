@@ -29,7 +29,7 @@
     </VBox>
     <Text layoutX="20.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="Latest Transactions" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="340.0" />
     <Text layoutX="446.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="Send Money" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="340.0" />
-    <ListView fx:id="transaction_listview" layoutX="20.0" layoutY="370.0" prefHeight="365.0" prefWidth="570.0" styleClass="transaction_listview" AnchorPane.bottomAnchor="14.666666666666742" AnchorPane.leftAnchor="20.0" />
+    <ListView fx:id="transaction_listview" layoutX="20.0" layoutY="370.0" prefHeight="300.0" prefWidth="500.0" styleClass="transaction_listview" AnchorPane.bottomAnchor="14.666666666666742" AnchorPane.leftAnchor="20.0" />
     <VBox layoutX="734.0" layoutY="370.0" prefHeight="365.0" prefWidth="240.0" styleClass="new_trans_container" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="0.0">
         <Label text="Payee Address" />
         <TextField fx:id="payee_fld">
@@ -48,7 +48,7 @@
              <String fx:value="account_gradient" />
          </styleClass>
          <Label fx:id="acc_bal" layoutX="36.0" layoutY="33.0" styleClass="account_balance" text="Rs. 10 000.00" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
-         <Label fx:id="acc_num" layoutX="14.0" layoutY="73.0" prefHeight="22.0" prefWidth="168.0" styleClass="account_number" text="****************" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="14.0" />
+         <Label fx:id="acc_num" layoutX="14.0" layoutY="73.0" prefHeight="22.0" prefWidth="168.0" style="-fx-font-size: 20;" styleClass="account_number" text="****************" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="14.0" />
          <VBox layoutX="194.0" prefHeight="100.0" prefWidth="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" />
          <FontAwesomeIconView glyphName="BANK" layoutX="245.0" layoutY="38.0" size="30" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0" />
          <Text fx:id="account_type" layoutX="15.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FFFFFF;" styleClass="accounts_view" text="Saving Account" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" />
