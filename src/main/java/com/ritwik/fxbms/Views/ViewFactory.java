@@ -4,8 +4,6 @@ import com.ritwik.fxbms.Controllers.Client.ClientController;
 import com.ritwik.fxbms.Controllers.Signup.SignupController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

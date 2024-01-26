@@ -117,11 +117,6 @@
       </font>
    </Button>
    <FontAwesomeIconView fill="#264653" glyphName="BANK" layoutX="71.0" layoutY="132.0" size="100" text="" />
-   <Label fx:id="error_lbl" layoutX="73.0" layoutY="649.0" style="-fx-background-color: #faedcd; -fx-text-fill: #c1121f;">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-   </Label>
    <padding>
       <Insets left="10.0" right="10.0" top="10.0" />
    </padding>

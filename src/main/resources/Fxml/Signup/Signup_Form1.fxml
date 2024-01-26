@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="750.0" prefWidth="740.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupForm1Controller">
-    <Label fx:id="form_number" layoutX="20.0" style="-fx-font-size: 38; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="1234" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
+    <Label fx:id="form_number" layoutX="20.0" style="-fx-font-size: 38; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="1234" AnchorPane.leftAnchor="552.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="20.0">
     </Label>
     <Label layoutX="104.0" layoutY="20.0" style="-fx-font-size: 38; -fx-font-weight: bold;" text="APPLICATION FORM NO." AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="185.0" AnchorPane.topAnchor="20.0" />
     <Label layoutX="232.0" layoutY="83.0" prefHeight="36.0" prefWidth="287.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 1: Personal Details" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="213.0" />

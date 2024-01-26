@@ -1,62 +1,3 @@
-//package com.ritwik.fxbms.Controllers;
-//
-//import com.ritwik.fxbms.Models.Model;
-//import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-//import javafx.fxml.Initializable;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.Label;
-//import javafx.scene.control.TextField;
-//import javafx.scene.control.PasswordField;
-//import javafx.stage.Stage;
-//
-//import java.net.URL;
-//import java.util.ResourceBundle;
-//
-//public class LoginController implements Initializable {
-//
-//    public Button login_btn;
-//
-//    //Email Authentication
-//    public TextField emailTextField;
-//    public Button sendOTPButton;
-//    public TextField otpTextField;
-//    public Button verifyOTPButton;
-//    public String expectedOTP;
-//    public boolean otpVerified = false;
-//
-//    //Admin Thingy
-//    public Button adminbtn;
-//    public TextField accountno;
-//    public PasswordField pin_no;
-//    public Button clear_btn;
-//    public Button signup_btn;
-//    public Label error_lbl;
-//
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        login_btn.setOnAction(event -> onLogin());
-//        signup_btn.setOnAction(event -> onSignup());
-//    }
-//
-//    private void onLogin() {
-//        Stage stage = (Stage) adminbtn.getScene().getWindow();
-//        Model.getInstance().getViewFactory().closeStage(stage);
-//        // Example: Show the Client Window
-//        Model.getInstance().getViewFactory().showClientWindow();
-//    }
-//
-//    private void onSignup() {
-//        Stage stage = (Stage) adminbtn.getScene().getWindow();
-//        Model.getInstance().getViewFactory().closeStage(stage);
-//        // Example: Show the Signup Window
-//        Model.getInstance().getViewFactory().showSignupWindow();
-//    }
-//
-//}
-
-
-
-
 package com.ritwik.fxbms.Controllers;
 
 import com.ritwik.fxbms.Models.Conn;
@@ -67,6 +8,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.mail.*;
@@ -106,6 +48,7 @@ public class LoginController implements Initializable {
         signup_btn.setOnAction(event -> onSignup());
         sendOTPButton.setOnAction(event -> onSendOTP());
         verifyOTPButton.setOnAction(event -> onVerifyOTP());
+        clear_btn.setOnAction(event -> clearField());
     }
 
     private void onLogin() {
@@ -127,7 +70,7 @@ public class LoginController implements Initializable {
                 showAlert("OTP verification is mandatory.");
             }
         } else {
-            showAlert("Incorrect Account Number, PIN, or Email");
+            showAlert("Enter Correct Account Number, PIN, or Email");
         }
     }
 
@@ -210,9 +153,8 @@ public class LoginController implements Initializable {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject("OTP Verification");
+            message.setSubject("Secure-BMS -> OTP Verification");
             message.setText("Your OTP for login is: " + otp);
-
             Transport.send(message);
 
             showAlert("OTP sent successfully to your email.");
@@ -227,6 +169,26 @@ public class LoginController implements Initializable {
         alert.setTitle("Information");
         alert.setHeaderText(null);
         alert.setContentText(message);
+        // Get the main application window
+        Stage mainWindow = (Stage) login_btn.getScene().getWindow();
+
+        // Set the owner of the alert dialog to the main application window
+        alert.initOwner(mainWindow);
+
+        // Set the modality to APPLICATION_MODAL to block user interaction with other windows
+        alert.initModality(Modality.APPLICATION_MODAL);
+
+        // Center the alert dialog on the main application window
+        alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
+        alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
         alert.showAndWait();
     }
+
+    private void clearField() {
+        accountno.setText("");
+        pin_no.setText("");
+        this.emailTextField.setText("");
+        this.otpTextField.setText("");
+    }
+
 }

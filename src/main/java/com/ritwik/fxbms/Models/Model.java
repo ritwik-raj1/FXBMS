@@ -18,4 +18,8 @@ public class Model {
     public ViewFactory getViewFactory() {
         return viewFactory;
     }
+
+//    public String setCurrentUserAccount(String pin) {
+//        return pin;
+//    }
 }

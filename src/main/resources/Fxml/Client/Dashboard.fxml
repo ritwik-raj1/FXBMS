@@ -20,7 +20,7 @@
     <Text layoutX="744.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="My Accounts" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
     <VBox layoutX="634.0" layoutY="110.0" prefHeight="180.0" prefWidth="210.0" styleClass="summary_view" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="120.0">
         <VBox prefHeight="200.0" prefWidth="100.0" styleClass="acc_summary_container">
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Income" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Deposit" />
             <Label fx:id="income_lbl" styleClass="income_amount" text="+ Rs 4000.00" />
             <Line endX="160.0" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Expenses" />
@@ -48,8 +48,7 @@
              <String fx:value="account_gradient" />
          </styleClass>
          <Label fx:id="acc_bal" layoutX="36.0" layoutY="33.0" styleClass="account_balance" text="Rs. 10 000.00" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0" />
-         <Label layoutX="14.0" layoutY="73.0" styleClass="account_number" text="**** **** ****" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="14.0" />
-         <Label fx:id="acc_num" layoutX="163.0" layoutY="118.0" styleClass="account_number" text="4558" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="138.0" />
+         <Label fx:id="acc_num" layoutX="14.0" layoutY="73.0" prefHeight="22.0" prefWidth="168.0" styleClass="account_number" text="****************" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="14.0" />
          <VBox layoutX="194.0" prefHeight="100.0" prefWidth="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" />
          <FontAwesomeIconView glyphName="BANK" layoutX="245.0" layoutY="38.0" size="30" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0" />
          <Text fx:id="account_type" layoutX="15.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #FFFFFF;" styleClass="accounts_view" text="Saving Account" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" />
