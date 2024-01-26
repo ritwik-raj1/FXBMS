@@ -109,9 +109,9 @@ public class SignupForm3Controller implements Initializable {
 
                     int rowsInserted = preparedStatement.executeUpdate();
                     if (rowsInserted > 0) {
-                        showAlert("Success", "Account details inserted successfully!");
+                        showAlert("Success", "Account details saved successfully!");
                     } else {
-                        showAlert("Error", "Failed to insert account details!");
+                        showAlert("Error", "Failed to save account details!");
                     }
                 }
             } catch (SQLException e) {

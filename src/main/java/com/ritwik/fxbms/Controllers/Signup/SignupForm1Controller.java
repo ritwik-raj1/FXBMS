@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -39,10 +40,20 @@ public class SignupForm1Controller implements Initializable {
     }
 
     private void addListeners() {
-        submit_form1_btn.setOnAction(event -> {
-            insertData();
-        });
+        submit_form1_btn.setOnAction(event -> {insertData();});
+
+        // ToggleGroup to ensure only one radio button is selected at a time for gender
+        ToggleGroup genderGroup = new ToggleGroup();
+        gender_radio1.setToggleGroup(genderGroup);
+        gender_radio2.setToggleGroup(genderGroup);
+
+        // ToggleGroup to ensure only one radio button is selected at a time for marital status
+        ToggleGroup maritalStatusGroup = new ToggleGroup();
+        marital_radio1.setToggleGroup(maritalStatusGroup);
+        marital_radio2.setToggleGroup(maritalStatusGroup);
+        marital_radio3.setToggleGroup(maritalStatusGroup);
     }
+
 
     private void insertData() {
         String name = name_fld.getText();
@@ -56,10 +67,10 @@ public class SignupForm1Controller implements Initializable {
             return;
         }
 
-        String gender = gender_radio1.isSelected() ? "Male" : "Female";
+        String gender = getGenderType();
 
         String email = email_fld.getText();
-        String marital_status = marital_radio1.isSelected() ? "Married" : (marital_radio2.isSelected() ? "Unmarried" : "Other");
+        String marital_status = getMaritalStatus();
 
         String address = address_fld.getText();
         String city = city_fld.getText();
@@ -94,7 +105,7 @@ public class SignupForm1Controller implements Initializable {
 
 
         try {
-            String formno = form_number.getText();
+            String formno = generateFormNumber();
 
             String query = "INSERT INTO signup VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try (Connection connection = Conn.getConnection();
@@ -114,9 +125,9 @@ public class SignupForm1Controller implements Initializable {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    showAlert("Success", "Data inserted successfully!");
+                    showAlert("Success", "Saved! Proceed to Form II.");
                 } else {
-                    showAlert("Error", "Failed to insert data!");
+                    showAlert("Error", "Failed to save the data!");
                 }
             }
         } catch (SQLException e) {
@@ -147,10 +158,54 @@ public class SignupForm1Controller implements Initializable {
         alert.showAndWait();
     }
 
-
     private String generateFormNumber() {
-        // Generate a random 4-digit form number
-        int randomNumber = (int) (Math.random() * 9000) + 1000; // Generate a random number between 1000 and 9999
-        return String.valueOf(randomNumber);
+    // Retrieve the last form number from the database
+    String lastFormNumber = getLastFormNumberFromDatabase();
+    int lastNumber = Integer.parseInt(lastFormNumber);
+
+    // Increment the last form number
+    int newFormNumber = lastNumber + 1;
+
+    return String.valueOf(newFormNumber);
+}
+
+    private String getLastFormNumberFromDatabase() {
+        String query = "SELECT MAX(form_number) FROM signup"; // Assuming the form number column is named 'form_number'
+
+        try (Connection connection = Conn.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String lastFormNumber = resultSet.getString(1);
+                if (lastFormNumber != null) {
+                    return lastFormNumber;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception appropriately
+        }
+
+        // If no form number found, return a default value or handle appropriately
+        return "1000"; // Default starting form number
+    }
+
+    private String getGenderType() {
+        if (gender_radio1.isSelected()) {
+            return "Male";
+        } else if (gender_radio2.isSelected()) {
+            return "Female";
+        }
+        {
+            return "";
+        }
+    }
+
+    private String getMaritalStatus() {
+        if (marital_radio1.isSelected()) {
+            return "Married";
+        } else if (marital_radio2.isSelected()) {
+            return "Unmarried";
+        } else return "Other";
     }
 }

@@ -40,12 +40,20 @@ public class SignupForm2Controller implements Initializable {
     }
 
     private void addListeners() {
-        submit_form2_btn.setOnAction(event -> {
-            insertData();
-        });
+        submit_form2_btn.setOnAction(event -> {insertData();});
+
+        // ToggleGroup to ensure only one radio button is selected at a time for Senior Citizen
+        ToggleGroup seniorGroup = new ToggleGroup();
+        senior_r1.setToggleGroup(seniorGroup);
+        senior_r2.setToggleGroup(seniorGroup);
+
+        // ToggleGroup to ensure only one radio button is selected at a time for Existing Account
+        ToggleGroup existingAccountGroup = new ToggleGroup();
+        existing_r1.setToggleGroup(existingAccountGroup);
+        existing_r2.setToggleGroup(existingAccountGroup);
     }
 
-    private String retrieveFormNumber() {
+        private String retrieveFormNumber() {
         String formNo = "";
         try {
             String query = "SELECT form_number FROM signup ORDER BY form_number DESC LIMIT 1"; // Retrieve form number from signup table
@@ -71,8 +79,8 @@ public class SignupForm2Controller implements Initializable {
         String occupation = occupation_cbox.getValue();
         String pan = pan_fld.getText();
         String aadhar = aadhaar_fld.getText();
-        String seniorCitizen = senior_r1.isSelected() ? "Yes" : "No";
-        String existingAccount = existing_r1.isSelected() ? "Yes" : "No";
+        String seniorCitizen = getSeniorCitizen();
+        String existingAccount = getExistingAccount();
 
         // Check if any field is empty or not selected
         if (formNumber.isEmpty() || religion == null || category == null || income == null ||
@@ -99,9 +107,9 @@ public class SignupForm2Controller implements Initializable {
 
                 int rowsInserted = preparedStatement.executeUpdate();
                 if (rowsInserted > 0) {
-                    showAlert("Success", "Data inserted successfully!");
+                    showAlert("Success", "Proceed to Form III.");
                 } else {
-                    showAlert("Error", "Failed to insert data!");
+                    showAlert("Error", "Failed to save the data!");
                 }
             }
         } catch (SQLException e) {
@@ -129,5 +137,17 @@ public class SignupForm2Controller implements Initializable {
         alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
 
         alert.showAndWait();
+    }
+
+    private String getSeniorCitizen() {
+        if (senior_r1.isSelected()) {
+            return "Yes";
+        } else return "No";
+    }
+
+    private String getExistingAccount() {
+        if (existing_r1.isSelected()) {
+            return "Yes";
+        } else return "No";
     }
 }
