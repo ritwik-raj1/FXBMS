@@ -49,7 +49,7 @@
 }
 
 .account_gradient {
-    -fx-background-color: linear-gradient(to right, #f9dcc4, #7f5539);
+    -fx-background-color: linear-gradient(to right, #f4a261, #e9c46a);
 }
 
 .account_balance {

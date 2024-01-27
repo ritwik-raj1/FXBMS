@@ -6,16 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2c8b00df-4b92-4217-9fb5-7849b51fbd73" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/Transaction_Statement.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6b87dfb-a669-4d56-8213-343abf6775af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6b87dfb-a669-4d56-8213-343abf6775af.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Transaction.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Accounts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Accounts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Transaction.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Transaction.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,10 +25,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
         <option value="Enum" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -58,39 +56,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.App.executor": "Run",
-    "Application.TransactionController.executor": "Run",
-    "JUnit.All in fxbms.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Ritwik Raj/Documents/Projects/fxbms",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TransactionController.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.All in fxbms.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ritwik Raj/Documents/Projects/fxbms&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ritwik Raj\Documents\Projects\fxbms\src\main\resources\Fxml" />
@@ -164,7 +162,9 @@
       <workItem from="1706286386835" duration="11615000" />
       <workItem from="1706304540464" duration="1372000" />
       <workItem from="1706308388528" duration="274000" />
-      <workItem from="1706331144642" duration="11229000" />
+      <workItem from="1706331144642" duration="11412000" />
+      <workItem from="1706357919647" duration="8546000" />
+      <workItem from="1706374887305" duration="9795000" />
     </task>
     <servers />
   </component>

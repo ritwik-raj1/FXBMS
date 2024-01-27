@@ -19,7 +19,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class TransactionController implements Initializable {
-    public ListView<String> transaction_listview;
+    public ListView transaction_listview;
     public TextField amount_txtfld;
     public Button deposit_btn;
 
@@ -49,7 +49,7 @@ public class TransactionController implements Initializable {
         ObservableList<String> transactions = FXCollections.observableArrayList();
         try {
             Connection connection = Conn.getConnection();
-            String query = "SELECT * FROM bank WHERE account_number = ? AND type = 'deposit'";
+            String query = "SELECT * FROM bank WHERE account_number = ? AND type = 'Deposit'";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, Model.getInstance().getAccountNumber());
             ResultSet resultSet = statement.executeQuery();
@@ -72,12 +72,12 @@ public class TransactionController implements Initializable {
             Connection connection = Conn.getConnection();
             String accountNumber = Model.getInstance().getAccountNumber();
 
-            String query = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, CURRENT_TIMESTAMP(), ?, ?)";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, accountNumber); // Set the account number
-            statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
-            statement.setString(3, "deposit");
-            statement.setDouble(4, amount);
+            // No need to set timestamp here, using CURRENT_TIMESTAMP() in the query directly
+            statement.setString(2, "Deposit"); // Set the transaction type
+            statement.setDouble(3, amount); // Set the amount
             statement.executeUpdate();
             showAlert("Deposit successful.");
         } catch (SQLException e) {

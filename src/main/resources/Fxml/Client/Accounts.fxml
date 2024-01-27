@@ -1,17 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0"
-            prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
-   <Button fx:id="statement_btn" layoutX="219.0" layoutY="277.0" mnemonicParsing="false" prefHeight="98.0"
-           prefWidth="305.0" text="Generate Statement">
-      <font>
-         <Font size="26.0"/>
-      </font>
-   </Button>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="850.0" styleClass="accounts_view_container" stylesheets="@../../Styles/Accounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
+   <Pane layoutX="8.0" layoutY="8.0" prefHeight="448.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Text layoutX="62.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAWAL WINDOW">
+         <font>
+            <Font name="Times New Roman Bold" size="23.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7251461744308472" green="0.08206386864185333" blue="0.08206386864185333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006721433905899926">
+                     <color>
+                        <Color red="0.7251461744308472" green="0.08206386864185333" blue="0.08206386864185333" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.09803921729326248" green="0.20392157137393951" blue="0.6784313917160034" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <TextField fx:id="withdraw_amount_textfield" layoutX="39.0" layoutY="156.0" prefHeight="39.0" prefWidth="321.0" promptText="Withdraw Amount" style="-fx-font-size: 15; -fx-alignment: center;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Line endX="108.111083984375" endY="-7.62939453125E-6" layoutX="235.0" layoutY="53.0" startX="-171.88888549804688" startY="-7.62939453125E-6" />
+      <Text layoutX="88.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ENTER THE AMOUNT">
+         <font>
+            <Font name="Bookman Old Style Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="withdraw_btn" layoutX="39.0" layoutY="224.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" styleClass="Button" text="WITHDRAW">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <ListView fx:id="withdraw_transaction_listview" layoutX="39.0" layoutY="365.0" prefHeight="312.0" prefWidth="321.0" />
+      <FontIcon layoutX="38.0" layoutY="32.0" />
+      <FontIcon iconLiteral="far-money-bill-alt" iconSize="30" layoutX="180.0" layoutY="89.0">
+         <iconColor>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7426900863647461" green="0.048901401460170746" blue="0.048901401460170746" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.09028951078653336" green="0.0478665791451931" blue="0.6842105388641357" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </iconColor>
+      </FontIcon>
+      <FontIcon layoutX="108.0" layoutY="253.0" />
+      <FontIcon fill="WHITE" iconLiteral="fas-chevron-circle-up" iconSize="30" layoutX="93.0" layoutY="259.0" />
+   </Pane>
+   <Pane layoutX="456.0" layoutY="14.0" prefHeight="312.0" prefWidth="400.0" styleClass="pane" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Text layoutX="143.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATEMENT ">
+         <font>
+            <Font name="Times New Roman Bold" size="23.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7426900863647461" green="0.048901401460170746" blue="0.048901401460170746" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.07959713786840439" green="0.23340372741222382" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Line endX="61.44439697265625" endY="-1.52587890625E-5" layoutX="225.0" layoutY="53.0" startX="-127.44446563720703" startY="-1.52587890625E-5" />
+      <Button fx:id="statement_btn" layoutX="66.0" layoutY="224.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="272.0" styleClass="Button" text="GENERATE STATEMENT">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="82.0" layoutY="67.0" prefHeight="97.0" prefWidth="240.0" style="-fx-wrap-text: true; -fx-padding: 10;" text="See your transactions in detail: Download your PDF statement.">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.12900957465171814" green="0.025599999353289604" blue="0.6399999856948853" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6491228342056274" green="0.05743267759680748" blue="0.05743267759680748" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <FontIcon iconLiteral="far-hand-point-down" iconSize="40" layoutX="183.0" layoutY="207.0">
+         <iconColor>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.12900957465171814" green="0.025599999353289604" blue="0.6399999856948853" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6491228342056274" green="0.05743267759680748" blue="0.05743267759680748" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </iconColor>
+      </FontIcon>
+      <FontIcon iconLiteral="far-file-pdf" iconSize="30" layoutX="100.0" layoutY="37.0">
+         <iconColor>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.8011695742607117" green="0.04286092519760132" blue="0.04286092519760132" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.04582099989056587" green="0.09999478608369827" blue="0.6959064602851868" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </iconColor>
+      </FontIcon>
+   </Pane>
+   <Pane layoutX="436.0" layoutY="340.0" prefHeight="382.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+      <Text layoutX="143.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIN CHANGE">
+         <font>
+            <Font name="Times New Roman Bold" size="23.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7426900863647461" green="0.048901401460170746" blue="0.048901401460170746" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.07959713786840439" green="0.23340372741222382" blue="0.7894737124443054" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <Line endX="65.22222900390625" endY="-1.52587890625E-5" layoutX="227.0" layoutY="50.0" startX="-131.66668701171875" startY="-1.52587890625E-5" />
+      <TextField fx:id="reset_pin_textfield" layoutX="74.0" layoutY="183.0" prefHeight="40.0" prefWidth="272.0" promptText="4 DIGIT PIN" style="-fx-alignment: center; -fx-font-size: 15; -fx-font-weight: bold;" />
+      <Label layoutX="80.0" layoutY="62.0" prefHeight="97.0" prefWidth="240.0" style="-fx-wrap-text: true; -fx-padding: 10;" text="TO RESET PIN: ENTER 4 DIGIT NEW PIN" textAlignment="CENTER">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.12900957465171814" green="0.025599999353289604" blue="0.6399999856948853" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6491228342056274" green="0.05743267759680748" blue="0.05743267759680748" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button fx:id="reset_pin_btn" layoutX="74.0" layoutY="269.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="272.0" styleClass="Button" text="RESET PIN">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <FontIcon iconLiteral="fas-user-lock" iconSize="30" layoutX="98.0" layoutY="37.0">
+         <iconColor>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.7134503126144409" green="0.04257213696837425" blue="0.04257213696837425" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.03754241392016411" green="0.04861261695623398" blue="0.7017543911933899" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </iconColor>
+      </FontIcon>
+   </Pane>
 </AnchorPane>

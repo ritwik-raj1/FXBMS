@@ -2,6 +2,8 @@ package com.ritwik.fxbms.Controllers.Client;
 
 import com.ritwik.fxbms.Models.Conn;
 import com.ritwik.fxbms.Models.Model;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -9,11 +11,13 @@ import javafx.scene.control.Button;
 import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -25,10 +29,17 @@ import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 public class AccountsController implements Initializable {
 
     public Button statement_btn;
+    public TextField withdraw_amount_textfield;
+    public Button withdraw_btn;
+    public ListView withdraw_transaction_listview;
+    public TextField reset_pin_textfield;
+    public Button reset_pin_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         statement_btn.setOnAction(event -> generateStatement());
+        withdraw_btn.setOnAction(event -> withdrawAmount());
+        loadTransactions();
     }
 
     private void generateStatement() {
@@ -53,18 +64,21 @@ public class AccountsController implements Initializable {
 
 
             // SQL query to retrieve transaction details along with account type
-            String sql = "SELECT b.date, b.type, b.amount, s.account_type " +
-                    "FROM bank b " +
-                    "INNER JOIN signup3 s ON b.account_number = s.account_number " +
-                    "WHERE b.account_number = ?";
+            // Fetch all rows from the bank table
+            String bankQuery = "SELECT date, type, amount FROM bank WHERE account_number = ?";
+            PreparedStatement bankStatement = connection.prepareStatement(bankQuery);
+            bankStatement.setString(1, accountNumber);
+            ResultSet resultSet = bankStatement.executeQuery();
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, accountNumber);
-            ResultSet resultSet = statement.executeQuery();
-            // Fetching user details
+            // Fetch the account_type from the signup3 table
+            String accountTypeQuery = "SELECT account_type FROM signup3 WHERE account_number = ?";
+            PreparedStatement accountTypeStatement = connection.prepareStatement(accountTypeQuery);
+            accountTypeStatement.setString(1, accountNumber);
+            ResultSet accountTypeResultSet = accountTypeStatement.executeQuery();
+
             String accountType = "";
-            if (resultSet.next()) {
-                accountType = resultSet.getString("account_type");
+            if (accountTypeResultSet.next()) {
+                accountType = accountTypeResultSet.getString("account_type");
             }
 
 
@@ -98,7 +112,7 @@ public class AccountsController implements Initializable {
                 drawCell(contentStream, 300, page.getMediaBox().getHeight() - 200, 100, "Type");
                 drawCell(contentStream, 400, page.getMediaBox().getHeight() - 200, 100, "Amount");
 
-// Draw table data
+                // Draw table data
                 int yOffset = (int) page.getMediaBox().getHeight() - 220;
                 while (resultSet.next() && yOffset > 50) {
                     String date = resultSet.getString("date");
@@ -157,5 +171,82 @@ public class AccountsController implements Initializable {
         contentStream.newLineAtOffset(x + 2, y + (float) 20 / 2 - 2);
         contentStream.showText(text);
         contentStream.endText();
+    }
+    
+    //Withdrawal Section
+    private void withdrawAmount() {
+        String accountNumber = Model.getInstance().getAccountNumber();
+        String withdrawalAmount = withdraw_amount_textfield.getText();
+
+        try {
+            Connection connection = Conn.getConnection(); // Get existing connection
+
+            // Query to calculate total deposit amount
+            String depositQuery = "SELECT COALESCE(SUM(CASE WHEN type = 'Deposit' THEN amount ELSE 0 END) - SUM(CASE WHEN type = 'Withdrawal' THEN amount ELSE 0 END), 0) AS total_deposit FROM bank WHERE account_number = ?";
+            PreparedStatement depositStatement = connection.prepareStatement(depositQuery);
+            depositStatement.setString(1, accountNumber);
+            ResultSet depositResultSet = depositStatement.executeQuery();
+            long totalDeposit = 0;
+            if (depositResultSet.next()) {
+                totalDeposit = depositResultSet.getLong("total_deposit");
+            }
+
+            // Check if withdrawal amount is greater than total deposit amount
+            long withdrawalAmountInt = Long.parseLong(withdrawalAmount);
+            if (withdrawalAmountInt > totalDeposit) {
+                // Show warning message for insufficient balance
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Insufficient Balance");
+                alert.setHeaderText(null);
+                alert.setContentText("Withdrawal amount exceeds available balance.");
+                alert.showAndWait();
+                return;
+            }
+
+            // Insert withdrawal transaction into bank
+            String transactionQuery = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, CURRENT_TIMESTAMP(), 'Withdrawal', ?)";
+            PreparedStatement transactionStatement = connection.prepareStatement(transactionQuery);
+            transactionStatement.setString(1, accountNumber);
+            transactionStatement.setString(2, withdrawalAmount);
+            transactionStatement.executeUpdate();
+
+            // Show success message
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Withdrawal Successful");
+            alert.setHeaderText(null);
+            alert.setContentText("Withdrawal of Rs. " + withdrawalAmount + " successful.");
+            alert.showAndWait();
+            loadTransactions(); // Update transaction listview
+            withdraw_amount_textfield.clear(); // Clear the amount text field
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Show error message
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Withdrawal Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error occurred during withdrawal. Please try again.");
+            alert.showAndWait();
+        }
+    }
+
+    private void loadTransactions() {
+        ObservableList<String> transactions = FXCollections.observableArrayList();
+        try {
+            Connection connection = Conn.getConnection();
+            String query = "SELECT * FROM bank WHERE account_number = ? AND type = 'Withdrawal'";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, Model.getInstance().getAccountNumber());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                double amount = resultSet.getDouble("amount");
+                Timestamp timestamp = resultSet.getTimestamp("date");
+                LocalDateTime dateTime = timestamp.toLocalDateTime();
+                String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                transactions.add("Withdrawal: Rs. " + amount + " ---> " + formattedDateTime);
+            }
+            withdraw_transaction_listview.setItems(transactions);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

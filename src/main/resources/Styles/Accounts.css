@@ -1,61 +1,32 @@
-/*.accounts_view_container {*/
-/*    -fx-background-color: #EEEEEE;*/
-/*}*/
+.accounts_view_container {
+    -fx-background-color: #EEEEEE;
+}
 
-/*.accounts_view_container Text {*/
-/*    -fx-fill: #888888;*/
-/*    -fx-font-size: 1.4em;*/
-/*    -fx-font-family: "Calibri";*/
-/*    -fx-font-weight: BOLD;*/
-/*}*/
+.list-view{
+    -fx-background-radius: 50 0 50 0;
+    -fx-border-width: 5;
+    -fx-border-color: #023047;
+    -fx-border-radius: 50 0 50 0;
+    -fx-padding: 10;
+    -fx-font-size: 13;
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
+}
 
-/*.accounts_view_container VBox {*/
-/*    -fx-border-width: 0 0 0 1;*/
-/*    -fx-border-color: #888888;*/
-/*    -fx-padding: 10;*/
-/*    -fx-spacing: 15;*/
-/*}*/
+.pane {
+    -fx-border-width: 3;
+    -fx-border-color: linear-gradient(to right, #f4a261, #e9c46a);
+    /*-fx-border-color: linear-gradient(to right, #b91515, #1934ad);*/
+    -fx-border-radius: 10;
+}
 
-/*.accounts_view_container VBox Text {*/
-/*    -fx-font-size: 1.2em;*/
-/*}*/
+.Button {
+    -fx-background-color: linear-gradient(to right, #f4a261, #e9c46a);
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 1.8em;
+    -fx-font-weight: bold;
+}
 
-/*.accounts_view_container VBox Label {*/
-/*    -fx-font-size: 1.2em;*/
-/*    -fx-font-weight: bold ;*/
-/*}*/
-
-/*.accounts_view_container TextField {*/
-/*    -fx-border-width: 230;*/
-/*    -fx-pref-height: 35;*/
-/*    -fx-background-color: #FFFFFF;*/
-/*    -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);*/
-/*}*/
-
-/*.accounts_view_container Button {*/
-/*    -fx-background-color: linear-gradient(to right, #132A13, #253F25);*/
-/*    fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);*/
-/*    -fx-pref-width: 220;*/
-/*    -fx-font-size: 1.5em;*/
-/*    -fx-font-family: "Calibri Light";*/
-/*    -fx-text-fill: #FFFFFF;*/
-/*}*/
-
-/*.accounts_view_container Button:hover {*/
-/*    -fx-cursor: hand;*/
-/*}*/
-
-/*.Pane {*/
-/*    !*-fx-background-image: url('art.jpg');*!*/
-/*    !*-fx-background-size: cover;*!*/
-/*    -fx-padding: 10;*/
-/*    -fx-background-radius: 10;*/
-/*    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10,0,0,10);*/
-/*}*/
-
-/*.Pane Text{*/
-/*    -fx-font-family: "Bookman Old Style";*/
-/*    -fx-font-size: 2em;*/
-/*    -fx-font-weight: Bold;*/
-/*    -fx-text-fill: #000000;*/
-/*}*/
+.Button:hover {
+    -fx-cursor: hand;
+}

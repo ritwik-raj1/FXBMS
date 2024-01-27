@@ -11,7 +11,7 @@
     -fx-font-weight: bold;
 }
 
-.transaction_container .list-view{
+.list-view{
     -fx-background-radius: 50 0 50 0;
     -fx-border-width: 5;
     -fx-border-color: #023047;
@@ -22,7 +22,7 @@
 }
 
 
-.transaction_container .Button {
+.transaction_container Button {
     -fx-background-color: linear-gradient(to right, #f4a261, #e9c46a);
     -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
     -fx-text-fill: #FFFFFF;

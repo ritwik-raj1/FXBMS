@@ -120,16 +120,21 @@
    </Button>
    <FontAwesomeIconView glyphName="BANK" layoutX="71.0" layoutY="132.0" size="100" text="">
       <fill>
-         <LinearGradient endX="1.0" endY="1.0">
+         <LinearGradient endX="1.0">
             <stops>
                <Stop>
                   <color>
-                     <Color red="1.0" green="0.38333332538604736" />
+                     <Color red="0.1342863291501999" green="0.31311097741127014" blue="0.3625730872154236" />
+                  </color>
+               </Stop>
+               <Stop offset="0.006721433905899926">
+                  <color>
+                     <Color red="0.9399999976158142" green="0.7122816443443298" />
                   </color>
                </Stop>
                <Stop offset="1.0">
                   <color>
-                     <Color red="1.0" green="1.0" blue="1.0" />
+                     <Color red="0.5299999713897705" green="0.4027999937534332" blue="0.05299999937415123" />
                   </color>
                </Stop>
             </stops>
