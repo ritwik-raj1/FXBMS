@@ -15,6 +15,8 @@ module com.ritwik.fxbms {
     requires java.sql;
     requires mysql.connector.j;
     requires java.mail;
+    requires org.apache.pdfbox;
+    requires java.desktop;
 
     opens com.ritwik.fxbms to javafx.fxml;
     opens com.ritwik.fxbms.Controllers to javafx.fxml;

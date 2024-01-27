@@ -12,11 +12,11 @@
 }
 
 .transaction_container .list-view{
-    -fx-background-radius: 10;
+    -fx-background-radius: 50 0 50 0;
     -fx-border-width: 5;
     -fx-border-color: #023047;
-    -fx-border-radius: 10;
-    -fx-padding: 10;
+    -fx-border-radius: 50 0 50 0;
+    -fx-padding: 20;
     -fx-font-size: 20;
     -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
 }

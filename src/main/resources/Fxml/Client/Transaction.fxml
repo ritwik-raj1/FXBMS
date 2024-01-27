@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="740.0" prefWidth="850.0" styleClass="transaction_container" stylesheets="@../../Styles/Transaction.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.TransactionController">
    <Text layoutX="301.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="transaction_container" text="Enter The Amount" AnchorPane.leftAnchor="301.0" AnchorPane.topAnchor="106.5" />
-   <ListView fx:id="transaction_listview" layoutX="182.0" layoutY="348.8888888888889" prefHeight="377.0" prefWidth="500.0" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="349.0" />
+   <ListView fx:id="transaction_listview" layoutX="182.0" layoutY="348.8888888888889" prefHeight="377.0" prefWidth="490.0" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="349.0" />
    <TextField fx:id="amount_txtfld" layoutX="180.0" layoutY="158.0" prefHeight="35.0" prefWidth="490.0" promptText="Amount in Rupees" style="-fx-font-size: 20;" />
    <Button fx:id="deposit_btn" layoutX="180.0" layoutY="235.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="490.0" style="-fx-alignment: center; -fx-font-size: 20; -fx-font-weight: bold;" styleClass="Button" text="Deposit" AnchorPane.leftAnchor="180.0" />
    <FontAwesomeIconView glyphName="INR" layoutX="400.0" layoutY="91.0" size="100">

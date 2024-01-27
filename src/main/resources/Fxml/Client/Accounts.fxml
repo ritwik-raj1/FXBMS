@@ -1,70 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="accounts_view_container" stylesheets="@../../Styles/Accounts.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
-   <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checking Account" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="51.40000057220459" />
-   <VBox layoutX="14.0" layoutY="69.0" prefHeight="300.0" prefWidth="450.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="69.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number" />
-      <Label fx:id="check_acc_num" text="1234 7890" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction Limit" />
-      <Label fx:id="transaction_limit" text="10" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Created" />
-      <Label fx:id="check_acc_date" text="2024-01-22" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance" />
-      <Label fx:id="check_acc_bal" text="Rs. 50 000" />
-   </VBox>
-   <Text layoutX="14.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saving Account" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="408.4000005722046" />
-   <VBox layoutX="14.0" layoutY="427.0" prefHeight="300.0" prefWidth="450.0" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="14.0">
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number" />
-      <Label fx:id="saving_acc_num" text="1234 7890" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Withdrawl Limit" />
-      <Label fx:id="withdrawl_limit" text="Rs. 2000" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Created" />
-      <Label fx:id="saving_acc_date" text="2024-01-22" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Balance" />
-      <Label fx:id="saving_acc_bal" text="Rs. 5,10,000" />
-   </VBox>
-   <Text layoutX="456.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move Funds To Saving Account:" AnchorPane.rightAnchor="179.7507781982422" AnchorPane.topAnchor="75.40000057220459" />
-   <TextField fx:id="amount_to_saving" layoutX="451.0" layoutY="115.0" prefHeight="25.0" prefWidth="221.0" AnchorPane.rightAnchor="177.66666666666663" AnchorPane.topAnchor="115.0" />
-   <Button fx:id="transfer_to_saving" layoutX="461.0" layoutY="183.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="221.0" text="Transfer" AnchorPane.rightAnchor="179.0" AnchorPane.topAnchor="183.0">
-      <graphic>
-         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_DOWN" size="20" />
-      </graphic>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0"
+            prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
+   <Button fx:id="statement_btn" layoutX="219.0" layoutY="277.0" mnemonicParsing="false" prefHeight="98.0"
+           prefWidth="305.0" text="Generate Statement">
+      <font>
+         <Font size="26.0"/>
+      </font>
    </Button>
-   <Text layoutX="454.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move Funds To Saving Account:" AnchorPane.rightAnchor="174.8273468017578" AnchorPane.topAnchor="437.4000005722046" />
-   <TextField fx:id="amount_to_checking" layoutX="455.0" layoutY="480.0" prefHeight="25.0" prefWidth="220.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="480.0" />
-   <Button fx:id="transfer_to_checking" layoutX="455.0" layoutY="547.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="221.0" text="Transfer" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="547.0">
-      <graphic>
-         <FontAwesomeIconView fill="WHITE" glyphName="ARROW_UP" size="20" />
-      </graphic>
-   </Button>
-   <Pane layoutX="801.0" layoutY="43.0" prefHeight="722.0" prefWidth="34.0" styleClass="Pane" stylesheets="@../../Styles/Accounts.css" AnchorPane.bottomAnchor="-22.555555555555543" AnchorPane.rightAnchor="14.777777777777828" AnchorPane.topAnchor="43.0">
-      <children>
-         <Text layoutX="6.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Be" wrappingWidth="16.888888888888886">
-            <font>
-               <Font size="35.0" />
-            </font>
-         </Text>
-         <Text layoutX="6.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAFE" wrappingWidth="16.888888888888886">
-            <font>
-               <Font size="35.0" />
-            </font>
-         </Text>
-         <Text layoutX="5.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Happy " wrappingWidth="16.888888888888886">
-            <font>
-               <Font size="35.0" />
-            </font>
-         </Text>
-         <Text layoutX="6.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BANKING" wrappingWidth="16.888888888888886">
-            <font>
-               <Font size="17.0" />
-            </font>
-         </Text>
-      </children>
-   </Pane>
-   <Text layoutX="257.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 3em;" text="Accounts" />
 </AnchorPane>

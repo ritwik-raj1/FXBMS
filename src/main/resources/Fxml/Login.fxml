@@ -15,7 +15,7 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="680.0" style="-fx-background-color: #eaf4f4;" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.LoginController">
-    <Label alignment="CENTER" layoutX="222.0" layoutY="58.0" prefHeight="87.0" prefWidth="420.0" style="&#10;" text="WELCOME TO BMS">
+    <Label alignment="CENTER" layoutX="232.0" layoutY="52.0" prefHeight="87.0" prefWidth="372.0" style="&#10;" text="WELCOME TO BMS" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="50.0">
         <font>
           <Font name="System Bold" size="40.0" />
         </font>
@@ -124,7 +124,7 @@
             <stops>
                <Stop>
                   <color>
-                     <Color red="0.8117647171020508" green="0.3607843220233917" blue="0.03921568766236305" />
+                     <Color red="1.0" green="0.38333332538604736" />
                   </color>
                </Stop>
                <Stop offset="1.0">
