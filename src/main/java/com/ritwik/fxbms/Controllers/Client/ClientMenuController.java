@@ -20,12 +20,10 @@ public class ClientMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        System.out.println("listener initialized");
         addListeners();
     }
 
     private void addListeners() {
-//        System.out.println("btn listener");
         dashboard_btn.setOnAction(event -> onDashboard());
         transact_btn.setOnAction(event -> onTransaction());
         account_btn.setOnAction(event -> onAccounts());
@@ -38,12 +36,10 @@ public class ClientMenuController implements Initializable {
         Model.getInstance().getViewFactory().showLoginWindow();
     }
     private void onDashboard() {
-//        System.out.println("Dash");
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.DASHBOARD);
     }
 
     private void onTransaction() {
-//        System.out.println("Transact");
         Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSACTIONS);
     }
 

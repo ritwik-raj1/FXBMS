@@ -7,7 +7,7 @@
     -fx-border-width: 5;
     -fx-border-color: #023047;
     -fx-border-radius: 50 0 50 0;
-    -fx-padding: 10;
+    -fx-padding: 15;
     -fx-font-size: 13;
     -fx-effect: dropshadow(three-pass-box, #AAAAAA,3,0,0,3);
 }

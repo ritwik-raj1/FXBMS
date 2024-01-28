@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.Random;
 
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
+
 public class SignupForm3Controller implements Initializable {
     public RadioButton acc_type_r1;
     public RadioButton acc_type_r2;
@@ -35,13 +37,12 @@ public class SignupForm3Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         retrieveFormNumber(); // Retrieve form number from the first signup page
-        generateAccountDetails(); // Generate account number and pin
+//        generateAccountDetails(); // Generate account number and pin
         addListeners();
     }
 
     private void addListeners() {
-        final_submit_btn.setOnAction(event -> {
-            handleFinalSubmit();});
+        final_submit_btn.setOnAction(event -> handleFinalSubmit());
 
         // ToggleGroup to ensure only one radio button is selected at a time
         ToggleGroup group = new ToggleGroup();
@@ -50,10 +51,10 @@ public class SignupForm3Controller implements Initializable {
         acc_type_r3.setToggleGroup(group);
         acc_type_r4.setToggleGroup(group);
 
-        login_btn.setOnAction(event -> onLogout());
+        login_btn.setOnAction(event -> onLogin());
     }
 
-    private void onLogout() {
+    private void onLogin() {
         Stage stage = (Stage) form_number.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
         Model.getInstance().getViewFactory().showLoginWindow();
@@ -78,18 +79,29 @@ public class SignupForm3Controller implements Initializable {
     // Method to generate account number and PIN
     private void generateAccountDetails() {
         Random random = new Random();
-        long first7 = (random.nextLong() % 90000000L) + 5040936000000000L;
-        String accountNo = String.valueOf(Math.abs(first7));
 
-        long first3 = (random.nextLong() % 9000L) + 1000L;
-        String pin = String.valueOf(Math.abs(first3));
+        // Generate a random 16-digit account number
+        StringBuilder accountNoBuilder = new StringBuilder();
+        for (int i = 0; i < 16; i++) {
+            accountNoBuilder.append(random.nextInt(10)); // Append a random digit (0-9)
+        }
+        String accountNo = accountNoBuilder.toString();
+
+        // Generate a random 6-digit PIN
+        StringBuilder pinBuilder = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            pinBuilder.append(random.nextInt(10)); // Append a random digit (0-9)
+        }
+        String pin = pinBuilder.toString();
 
         account_number.setText(accountNo);
         pin_number.setText(pin);
     }
 
+
     // Method to handle final submission
     public void handleFinalSubmit() {
+        generateAccountDetails();
         if (declare_check.isSelected()) {
             String accountType = getSelectedAccountType();
             String services = getSelectedServices();
@@ -109,17 +121,22 @@ public class SignupForm3Controller implements Initializable {
 
                     int rowsInserted = preparedStatement.executeUpdate();
                     if (rowsInserted > 0) {
-                        showAlert("Success", "Account details saved successfully!");
+                        showAlert("Success", """
+                                Account Created...
+                                Account Number And PIN Generated Successfully
+                                Save it and Don't Share !
+                                Thanks...""",
+                                (Stage) final_submit_btn.getScene().getWindow());
                     } else {
-                        showAlert("Error", "Failed to save account details!");
+                        showAlert("Error", "Failed to save account details!",(Stage) final_submit_btn.getScene().getWindow());
                     }
                 }
             } catch (SQLException e) {
-                showAlert("Error", "Failed to insert data into the database.");
+                showAlert("Error", "Failed to insert data into the database.",(Stage) final_submit_btn.getScene().getWindow());
                 e.printStackTrace();
             }
         } else {
-            showAlert("Warning", "Please declare the correctness of the entered details.");
+            showAlert("Warning", "Please declare the correctness of the entered details.",(Stage) final_submit_btn.getScene().getWindow());
         }
     }
 
@@ -160,14 +177,5 @@ public class SignupForm3Controller implements Initializable {
             services.append("E-Statement ");
         }
         return services.toString().trim();
-    }
-
-    // Method to display an alert dialog
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 }

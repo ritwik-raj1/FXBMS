@@ -14,8 +14,8 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="850.0" styleClass="accounts_view_container" stylesheets="@../../Styles/Accounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
-   <Pane layoutX="8.0" layoutY="8.0" prefHeight="448.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="850.0" styleClass="accounts_view_container" stylesheets="@../../Styles/Accounts.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.AccountsController">
+   <Pane layoutX="8.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="448.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
       <Text layoutX="62.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WITHDRAWAL WINDOW">
          <font>
             <Font name="Times New Roman Bold" size="23.0" />
@@ -53,12 +53,15 @@
             <Font name="Bookman Old Style Bold" size="20.0" />
          </font>
       </Text>
-      <Button fx:id="withdraw_btn" layoutX="39.0" layoutY="224.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" styleClass="Button" text="WITHDRAW">
+      <Button fx:id="withdraw_btn" layoutX="39.0" layoutY="224.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" prefWidth="320.0" styleClass="Button" text=" WITHDRAW">
          <font>
             <Font size="20.0" />
          </font>
+         <graphic>
+            <FontIcon fill="WHITE" iconLiteral="fas-chevron-circle-up" iconSize="30" />
+         </graphic>
       </Button>
-      <ListView fx:id="withdraw_transaction_listview" layoutX="39.0" layoutY="365.0" prefHeight="312.0" prefWidth="321.0" />
+      <ListView fx:id="withdraw_transaction_listview" layoutX="32.0" layoutY="331.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="350.0" prefWidth="335.0" />
       <FontIcon layoutX="38.0" layoutY="32.0" />
       <FontIcon iconLiteral="far-money-bill-alt" iconSize="30" layoutX="180.0" layoutY="89.0">
          <iconColor>
@@ -79,9 +82,8 @@
          </iconColor>
       </FontIcon>
       <FontIcon layoutX="108.0" layoutY="253.0" />
-      <FontIcon fill="WHITE" iconLiteral="fas-chevron-circle-up" iconSize="30" layoutX="93.0" layoutY="259.0" />
    </Pane>
-   <Pane layoutX="456.0" layoutY="14.0" prefHeight="312.0" prefWidth="400.0" styleClass="pane" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+   <Pane layoutX="456.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="312.0" prefWidth="400.0" styleClass="pane" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
       <Text layoutX="143.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATEMENT ">
          <font>
             <Font name="Times New Roman Bold" size="23.0" />
@@ -167,7 +169,7 @@
          </iconColor>
       </FontIcon>
    </Pane>
-   <Pane layoutX="436.0" layoutY="340.0" prefHeight="382.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
+   <Pane layoutX="436.0" layoutY="340.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="382.0" prefWidth="400.0" styleClass="pane" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
       <Text layoutX="143.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIN CHANGE">
          <font>
             <Font name="Times New Roman Bold" size="23.0" />
@@ -190,8 +192,8 @@
          </fill>
       </Text>
       <Line endX="65.22222900390625" endY="-1.52587890625E-5" layoutX="227.0" layoutY="50.0" startX="-131.66668701171875" startY="-1.52587890625E-5" />
-      <TextField fx:id="reset_pin_textfield" layoutX="74.0" layoutY="183.0" prefHeight="40.0" prefWidth="272.0" promptText="4 DIGIT PIN" style="-fx-alignment: center; -fx-font-size: 15; -fx-font-weight: bold;" />
-      <Label layoutX="80.0" layoutY="62.0" prefHeight="97.0" prefWidth="240.0" style="-fx-wrap-text: true; -fx-padding: 10;" text="TO RESET PIN: ENTER 4 DIGIT NEW PIN" textAlignment="CENTER">
+      <TextField fx:id="reset_pin_textfield" layoutX="74.0" layoutY="195.0" prefHeight="40.0" prefWidth="272.0" promptText="6 DIGIT PIN" style="-fx-alignment: center; -fx-font-size: 15; -fx-font-weight: bold;" />
+      <Label layoutX="56.0" layoutY="67.0" prefHeight="128.0" prefWidth="309.0" style="-fx-wrap-text: true; -fx-padding: 10;" text="Select a unique 6-digit PIN for optimal security. Avoid predictable patterns and prioritize numbers not easily linked to you." textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>

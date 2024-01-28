@@ -11,26 +11,26 @@
 <AnchorPane prefHeight="750.0" prefWidth="740.0" style="-fx-background-color: #EEEEEE;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Signup.SignupForm2Controller">
     <Label layoutX="198.0" layoutY="63.0" style="-fx-font-size: 25; -fx-font-weight: bold;" text="Page 2: Additional Details" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="237.55555555555554" />
     <Label layoutX="56.0" layoutY="144.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Religion:" AnchorPane.leftAnchor="60.0" />
-    <ComboBox fx:id="religion_cbox" layoutX="350.0" layoutY="142.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <ComboBox fx:id="religion_cbox" layoutX="350.0" layoutY="142.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14; -fx-cursor: hand;" />
     <Label layoutX="57.0" layoutY="200.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Category:" AnchorPane.leftAnchor="60.0" />
-    <ComboBox fx:id="category_cbox" layoutX="350.0" layoutY="198.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <ComboBox fx:id="category_cbox" layoutX="350.0" layoutY="198.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14; -fx-cursor: hand;" />
     <Label layoutX="60.0" layoutY="257.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Income:" AnchorPane.leftAnchor="60.0" />
-    <ComboBox fx:id="income_cbox" layoutX="350.0" layoutY="255.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <ComboBox fx:id="income_cbox" layoutX="350.0" layoutY="255.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14; -fx-cursor: hand;" />
     <Label layoutX="60.0" layoutY="318.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Educational Qualification:" AnchorPane.leftAnchor="60.0" />
-    <ComboBox fx:id="educational_cbox" layoutX="350.0" layoutY="316.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <ComboBox fx:id="educational_cbox" layoutX="350.0" layoutY="316.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14; -fx-cursor: hand;" />
     <Label layoutX="60.0" layoutY="375.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Occupation:" AnchorPane.leftAnchor="60.0" />
-    <ComboBox fx:id="occupation_cbox" layoutX="350.0" layoutY="373.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14;" />
+    <ComboBox fx:id="occupation_cbox" layoutX="350.0" layoutY="373.0" prefHeight="30.0" prefWidth="320.0" style="-fx-font-size: 14; -fx-cursor: hand;" />
     <Label layoutX="62.0" layoutY="439.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="PAN Number:" AnchorPane.leftAnchor="60.0" />
     <TextField fx:id="pan_fld" layoutX="350.0" layoutY="437.0" prefHeight="30.0" prefWidth="320.0" promptText="Valid Pan Number" style="-fx-font-size: 14;" />
     <Label layoutX="57.0" layoutY="499.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Aadhaar Number:" AnchorPane.leftAnchor="60.0" />
     <TextField fx:id="aadhaar_fld" layoutX="350.0" layoutY="497.0" prefHeight="30.0" prefWidth="320.0" promptText="Aadhaar Number" style="-fx-font-size: 14;" />
     <Label layoutX="58.0" layoutY="558.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Senior Citizen:" AnchorPane.leftAnchor="60.0" />
-    <RadioButton fx:id="senior_r1" layoutX="347.0" layoutY="562.0" style="-fx-font-size: 14;" text="Yes" />
-    <RadioButton fx:id="senior_r2" layoutX="460.0" layoutY="562.0" style="-fx-font-size: 14;" text="No" />
+    <RadioButton fx:id="senior_r1" layoutX="347.0" layoutY="562.0" style="-fx-font-size: 14; -fx-cursor: hand;" text="Yes" />
+    <RadioButton fx:id="senior_r2" layoutX="460.0" layoutY="562.0" style="-fx-font-size: 14; -fx-cursor: hand;" text="No" />
     <Label layoutX="57.0" layoutY="612.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Existing Account:" AnchorPane.leftAnchor="60.0" />
-    <RadioButton fx:id="existing_r1" layoutX="347.0" layoutY="616.0" style="-fx-font-size: 14;" text="Yes" />
-    <RadioButton fx:id="existing_r2" layoutX="460.0" layoutY="616.0" style="-fx-font-size: 14;" text="No" />
-    <Button fx:id="submit_form2_btn" layoutX="580.0" layoutY="656.0" style="-fx-font-size: 20; -fx-background-color: black; -fx-text-fill: white;" text="Submit" />
+    <RadioButton fx:id="existing_r1" layoutX="347.0" layoutY="616.0" style="-fx-font-size: 14; -fx-cursor: hand;" text="Yes" />
+    <RadioButton fx:id="existing_r2" layoutX="460.0" layoutY="616.0" style="-fx-font-size: 14; -fx-cursor: hand;" text="No" />
+    <Button fx:id="submit_form2_btn" layoutX="580.0" layoutY="656.0" style="-fx-font-size: 20; -fx-background-color: black; -fx-text-fill: white; -fx-cursor: hand;" text="Submit" />
    <Text layoutX="238.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-weight: bold;" text="Form No." AnchorPane.leftAnchor="238.0" />
    <Label fx:id="form_number" layoutX="385.0" layoutY="3.0" style="-fx-font-size: 30; -fx-font-weight: bold; -fx-text-fill: #fb8500;" text="Hello" AnchorPane.leftAnchor="380.0" AnchorPane.rightAnchor="285.0" AnchorPane.topAnchor="5.0" />
 </AnchorPane>

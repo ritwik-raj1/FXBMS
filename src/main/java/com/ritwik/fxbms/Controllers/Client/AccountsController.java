@@ -5,7 +5,6 @@ import com.ritwik.fxbms.Models.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 
 import java.awt.Color;
@@ -18,13 +17,14 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
+
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
 
 public class AccountsController implements Initializable {
 
@@ -39,6 +39,7 @@ public class AccountsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         statement_btn.setOnAction(event -> generateStatement());
         withdraw_btn.setOnAction(event -> withdrawAmount());
+        reset_pin_btn.setOnAction(event -> resetPin());
         loadTransactions();
     }
 
@@ -102,7 +103,7 @@ public class AccountsController implements Initializable {
                 contentStream.newLineAtOffset(0, -20); // Next line
                 contentStream.showText("Account No: " + accountNumber);
                 contentStream.newLineAtOffset(0, -20); // Next line
-                contentStream.showText("Name: " + userName);
+                contentStream.showText("Customer Name: " + userName);
                 contentStream.newLineAtOffset(0, -20); // Next line
                 contentStream.showText("Father's Name: " + userFatherName);
                 contentStream.endText();
@@ -130,26 +131,9 @@ public class AccountsController implements Initializable {
                 // Save PDF document
                 document.save("Transaction_Statement.pdf");
 
-                // Show alert
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("PDF Generated");
-                alert.setHeaderText(null);
-                alert.setContentText("Transaction statement generated successfully.");
-                // Get the main application window
-                Stage mainWindow = (Stage) statement_btn.getScene().getWindow();
+                showAlert("Success!","Transaction statement generated successfully.",(Stage) reset_pin_btn.getScene().getWindow());
 
-                // Set the owner of the alert dialog to the main application window
-                alert.initOwner(mainWindow);
-
-                // Set the modality to APPLICATION_MODAL to block user interaction with other windows
-                alert.initModality(Modality.APPLICATION_MODAL);
-
-                // Center the alert dialog on the main application window
-                alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
-                alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
-                alert.showAndWait();
             }
-
             System.out.println("Transaction statement generated successfully.");
         } catch (Exception e) {
             e.printStackTrace();
@@ -176,13 +160,13 @@ public class AccountsController implements Initializable {
     //Withdrawal Section
     private void withdrawAmount() {
         String accountNumber = Model.getInstance().getAccountNumber();
-        String withdrawalAmount = withdraw_amount_textfield.getText();
+        double withdrawalAmount = Double.parseDouble(withdraw_amount_textfield.getText());
 
         try {
             Connection connection = Conn.getConnection(); // Get existing connection
 
             // Query to calculate total deposit amount
-            String depositQuery = "SELECT COALESCE(SUM(CASE WHEN type = 'Deposit' THEN amount ELSE 0 END) - SUM(CASE WHEN type = 'Withdrawal' THEN amount ELSE 0 END), 0) AS total_deposit FROM bank WHERE account_number = ?";
+            String depositQuery = "SELECT COALESCE(SUM(IF(type = 'Deposit', amount, 0)) - SUM(IF(type = 'Withdrawal', amount, 0)), 0) AS total_deposit FROM bank WHERE account_number = ?";
             PreparedStatement depositStatement = connection.prepareStatement(depositQuery);
             depositStatement.setString(1, accountNumber);
             ResultSet depositResultSet = depositStatement.executeQuery();
@@ -192,14 +176,10 @@ public class AccountsController implements Initializable {
             }
 
             // Check if withdrawal amount is greater than total deposit amount
-            long withdrawalAmountInt = Long.parseLong(withdrawalAmount);
-            if (withdrawalAmountInt > totalDeposit) {
+//            withdrawalAmount = Double.parseDouble(withdrawalAmountString);
+            if (withdrawalAmount > totalDeposit) {
                 // Show warning message for insufficient balance
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Insufficient Balance");
-                alert.setHeaderText(null);
-                alert.setContentText("Withdrawal amount exceeds available balance.");
-                alert.showAndWait();
+                showAlert("Warning!","Withdrawal amount exceeds available balance.",(Stage) reset_pin_btn.getScene().getWindow());
                 return;
             }
 
@@ -207,25 +187,17 @@ public class AccountsController implements Initializable {
             String transactionQuery = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, CURRENT_TIMESTAMP(), 'Withdrawal', ?)";
             PreparedStatement transactionStatement = connection.prepareStatement(transactionQuery);
             transactionStatement.setString(1, accountNumber);
-            transactionStatement.setString(2, withdrawalAmount);
+                transactionStatement.setDouble(2, withdrawalAmount);
             transactionStatement.executeUpdate();
 
             // Show success message
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Withdrawal Successful");
-            alert.setHeaderText(null);
-            alert.setContentText("Withdrawal of Rs. " + withdrawalAmount + " successful.");
-            alert.showAndWait();
+            showAlert("Success!","Withdrawal of Rs. " + withdrawalAmount + " successful.",(Stage) reset_pin_btn.getScene().getWindow());
             loadTransactions(); // Update transaction listview
             withdraw_amount_textfield.clear(); // Clear the amount text field
         } catch (Exception e) {
             e.printStackTrace();
             // Show error message
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Withdrawal Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Error occurred during withdrawal. Please try again.");
-            alert.showAndWait();
+            showAlert("Error!","Error occurred during withdrawal. Please try again.",(Stage) reset_pin_btn.getScene().getWindow());
         }
     }
 
@@ -249,4 +221,30 @@ public class AccountsController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void resetPin() {
+        String accountNumber = Model.getInstance().getAccountNumber();
+        String newPin = reset_pin_textfield.getText();
+
+        try {
+            Connection connection = Conn.getConnection();
+
+            // Update the pin in the signup3 table
+            String updateQuery = "UPDATE signup3 SET pin_number = ? WHERE account_number = ?";
+            PreparedStatement updateStatement = connection.prepareStatement(updateQuery);
+            updateStatement.setString(1, newPin);
+            updateStatement.setString(2, accountNumber);
+            int rowsUpdated = updateStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                showAlert("Success!","PIN reset successful.",(Stage) reset_pin_btn.getScene().getWindow());
+            } else {
+                showAlert("Error!","Failed to reset PIN. Please try again.",(Stage) reset_pin_btn.getScene().getWindow());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error!","Failed to reset PIN. Please try again.",(Stage) reset_pin_btn.getScene().getWindow());
+        }
+    }
+
 }

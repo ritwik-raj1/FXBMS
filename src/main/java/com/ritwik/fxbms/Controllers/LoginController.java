@@ -3,12 +3,9 @@ package com.ritwik.fxbms.Controllers;
 import com.ritwik.fxbms.Models.Conn;
 import com.ritwik.fxbms.Models.Model;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.mail.*;
@@ -23,6 +20,8 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
+import static com.ritwik.fxbms.Utils.passKey.*;
 public class LoginController implements Initializable {
 
     public Button login_btn;
@@ -66,13 +65,12 @@ public class LoginController implements Initializable {
             if (otpVerified) {
                 Stage stage = (Stage) signup_btn.getScene().getWindow();
                 Model.getInstance().getViewFactory().closeStage(stage);
-                // Example: Show the Transactions Window
                 Model.getInstance().getViewFactory().showClientWindow();
             } else {
-                showAlert("OTP verification is mandatory.");
+                showAlert("OTP","OTP verification is mandatory.",(Stage) login_btn.getScene().getWindow());
             }
         } else {
-            showAlert("Enter Correct Account Number, PIN, or Email");
+            showAlert("Error!","Enter Correct Account Number, PIN, or Email",(Stage) login_btn.getScene().getWindow());
         }
     }
 
@@ -107,24 +105,49 @@ public class LoginController implements Initializable {
 
     private void onSendOTP() {
         String email = emailTextField.getText();
-        if (email.isEmpty()) {
-            showAlert("Please enter your email.");
+        String accountNumber = accountno.getText();
+        if (email.isEmpty() || accountNumber.isEmpty()) {
+            showAlert("Hello User","Please enter your email and account number.",(Stage) login_btn.getScene().getWindow());
         } else {
-            // Generate and send OTP
-            expectedOTP = generateOTP();
-            // Send OTP via email
-            sendOTP(email, expectedOTP);
-            otpVerified = false; // Reset OTP verification status
+            // Check if the provided email and account number match
+            if (isEmailMatchAccountNumber(email, accountNumber)) {
+                // Generate and send OTP
+                expectedOTP = generateOTP();
+                // Send OTP via email
+                sendOTP(email, expectedOTP);
+                otpVerified = false; // Reset OTP verification status
+            } else {
+                showAlert("Error!","Email and account number do not match. ❌",(Stage) login_btn.getScene().getWindow());
+            }
         }
     }
+
+    private boolean isEmailMatchAccountNumber(String email, String accountNumber) {
+        try {
+            Connection connection = Conn.getConnection();
+            String query = "SELECT s.form_number " +
+                    "FROM signup s " +
+                    "JOIN signup3 s3 ON s.form_number = s3.form_number " +
+                    "WHERE s.email = ? AND s3.account_number = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+            statement.setString(2, accountNumber);
+            ResultSet rs = statement.executeQuery();
+            return rs.next(); // If the query returns a result, the email and account number match
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle database errors
+            return false;
+        }
+    }
+
 
     private void onVerifyOTP() {
         String userEnteredOTP = otpTextField.getText();
         if (userEnteredOTP.equals(expectedOTP)) {
             otpVerified = true; // Mark OTP as verified
-            showAlert("OTP verification successful. You can now proceed.");
+            showAlert("Success!","OTP verification successful. You can now proceed.",(Stage) login_btn.getScene().getWindow());
         } else {
-            showAlert("Invalid OTP. Please try again.");
+            showAlert("Error!","Invalid OTP. Please try again.",(Stage) login_btn.getScene().getWindow());
         }
     }
 
@@ -135,8 +158,8 @@ public class LoginController implements Initializable {
     }
 
     private void sendOTP(String email, String otp) {
-        final String username = "prd.ritwik.raj@gmail.com"; // Replace with your email
-        final String password = "wktreuulxssqrxgr"; // Replace with your email password
+        final String username = getUsername(); // Replace with your email
+        final String password = getPassword(); // Replace with your email password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -155,35 +178,25 @@ public class LoginController implements Initializable {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject("Secure-BMS -> OTP Verification");
-            message.setText("Your OTP for login is: " + otp);
+            message.setSubject("🏦 Secure-BMS: OTP Verification");
+            message.setText("Thank you for choosing Secure-BMS for your banking needs. Your security is our priority.\n" +
+                    "\n" +
+                    "To complete the login process and ensure the security of your account, please use the following OTP (One-Time Password):\n" +
+                    "\n" +
+                    "Your OTP for login is: " + otp +
+                    "\n" +
+                    "\nIf you did not request this OTP or if you have any concerns about the security of your account, please contact our support team immediately.\n" +
+                    "\n" +
+                    "Best Regards,\n" +
+                    "Ritwik Raj\n"+
+                    "CEO - Secure-BMS");
             Transport.send(message);
 
-            showAlert("OTP sent successfully to your email.");
+            showAlert("Hurray!","OTP sent successfully to your email.",(Stage) login_btn.getScene().getWindow());
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        // Get the main application window
-        Stage mainWindow = (Stage) login_btn.getScene().getWindow();
-
-        // Set the owner of the alert dialog to the main application window
-        alert.initOwner(mainWindow);
-
-        // Set the modality to APPLICATION_MODAL to block user interaction with other windows
-        alert.initModality(Modality.APPLICATION_MODAL);
-
-        // Center the alert dialog on the main application window
-        alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
-        alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
-        alert.showAndWait();
     }
 
     private void clearField() {
@@ -192,5 +205,4 @@ public class LoginController implements Initializable {
         this.emailTextField.setText("");
         this.otpTextField.setText("");
     }
-
 }

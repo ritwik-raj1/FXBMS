@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
+
 public class SignupForm1Controller implements Initializable {
     public TextField name_fld;
     public TextField father_fld;
@@ -38,9 +40,8 @@ public class SignupForm1Controller implements Initializable {
         form_number.setText(formno);
         addListeners();
     }
-
     private void addListeners() {
-        submit_form1_btn.setOnAction(event -> {insertData();});
+        submit_form1_btn.setOnAction(event -> insertData());
 
         // ToggleGroup to ensure only one radio button is selected at a time for gender
         ToggleGroup genderGroup = new ToggleGroup();
@@ -58,12 +59,12 @@ public class SignupForm1Controller implements Initializable {
     private void insertData() {
         String name = name_fld.getText();
         String father_name = father_fld.getText();
-        String dob = null;
+        String dob;
         LocalDate selectedDate = date_picker.getValue();
         if (selectedDate != null) {
-            dob = ((LocalDate) selectedDate).toString();
+            dob = selectedDate.toString();
         } else {
-            showAlert("Warning", "Please select a date of birth.");
+            showAlert("Warning", "Please select a date of birth.", (Stage) submit_form1_btn.getScene().getWindow());
             return;
         }
 
@@ -78,28 +79,25 @@ public class SignupForm1Controller implements Initializable {
         String state = state_fld.getText();
 
         if (name.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: Name");
+            showAlert("Warning", "Please fill in the required field: Name",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (father_name.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: Father's Name");
-            return;
-        } else if (dob == null) {
-            showAlert("Warning", "Please fill in the required field: Date of Birth");
+            showAlert("Warning", "Please fill in the required field: Father's Name",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (email.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: Email Address");
+            showAlert("Warning", "Please fill in the required field: Email Address",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (address.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: Address");
+            showAlert("Warning", "Please fill in the required field: Address",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (city.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: City");
+            showAlert("Warning", "Please fill in the required field: City",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (pincode.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: Pin Code");
+            showAlert("Warning", "Please fill in the required field: Pin Code",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         } else if (state.isEmpty()) {
-            showAlert("Warning", "Please fill in the required field: State");
+            showAlert("Warning", "Please fill in the required field: State",(Stage) submit_form1_btn.getScene().getWindow());
             return;
         }
 
@@ -125,37 +123,15 @@ public class SignupForm1Controller implements Initializable {
                 int rowsAffected = preparedStatement.executeUpdate();
 
                 if (rowsAffected > 0) {
-                    showAlert("Success", "Saved! Proceed to Form II.");
+                    showAlert("Success", "Saved! Proceed to Form II.",(Stage) submit_form1_btn.getScene().getWindow());
                 } else {
-                    showAlert("Error", "Failed to save the data!");
+                    showAlert("Error", "Failed to save the data!",(Stage) submit_form1_btn.getScene().getWindow());
                 }
             }
         } catch (SQLException e) {
-            showAlert("Error", "Failed to insert data into the database.");
+            showAlert("Error", "Failed to insert data into the database.",(Stage) submit_form1_btn.getScene().getWindow());
             e.printStackTrace();
         }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-
-        // Get the main application window
-        Stage mainWindow = (Stage) submit_form1_btn.getScene().getWindow();
-
-        // Set the owner of the alert dialog to the main application window
-        alert.initOwner(mainWindow);
-
-        // Set the modality to APPLICATION_MODAL to block user interaction with other windows
-        alert.initModality(Modality.APPLICATION_MODAL);
-
-        // Center the alert dialog on the main application window
-        alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
-        alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
-
-        alert.showAndWait();
     }
 
     private String generateFormNumber() {

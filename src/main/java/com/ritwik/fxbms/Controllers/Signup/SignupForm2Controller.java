@@ -3,7 +3,6 @@ package com.ritwik.fxbms.Controllers.Signup;
 import com.ritwik.fxbms.Models.Conn;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -11,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
 
 public class SignupForm2Controller implements Initializable {
     public ComboBox<String> religion_cbox;
@@ -40,7 +41,7 @@ public class SignupForm2Controller implements Initializable {
     }
 
     private void addListeners() {
-        submit_form2_btn.setOnAction(event -> {insertData();});
+        submit_form2_btn.setOnAction(event -> insertData());
 
         // ToggleGroup to ensure only one radio button is selected at a time for Senior Citizen
         ToggleGroup seniorGroup = new ToggleGroup();
@@ -86,7 +87,7 @@ public class SignupForm2Controller implements Initializable {
         if (formNumber.isEmpty() || religion == null || category == null || income == null ||
                 education == null || occupation == null || pan.isEmpty() || aadhar.isEmpty() ||
                 (!senior_r1.isSelected() && !senior_r2.isSelected()) || (!existing_r1.isSelected() && !existing_r2.isSelected())) {
-            showAlert("Warning", "Please fill in all the fields.");
+            showAlert("Warning", "Please fill in all the fields.",(Stage) submit_form2_btn.getScene().getWindow());
             return;
         }
 
@@ -107,36 +108,15 @@ public class SignupForm2Controller implements Initializable {
 
                 int rowsInserted = preparedStatement.executeUpdate();
                 if (rowsInserted > 0) {
-                    showAlert("Success", "Proceed to Form III.");
+                    showAlert("Success", "Proceed to Form III.",(Stage) submit_form2_btn.getScene().getWindow());
                 } else {
-                    showAlert("Error", "Failed to save the data!");
+                    showAlert("Error", "Failed to save the data!",(Stage) submit_form2_btn.getScene().getWindow());
                 }
             }
         } catch (SQLException e) {
-            showAlert("Error", "Failed to insert data into the database.");
+            showAlert("Error", "Failed to insert data into the database.",(Stage) submit_form2_btn.getScene().getWindow());
             e.printStackTrace();
         }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        // Get the main application window
-        Stage mainWindow = (Stage) submit_form2_btn.getScene().getWindow();
-
-        // Set the owner of the alert dialog to the main application window
-        alert.initOwner(mainWindow);
-
-        // Set the modality to APPLICATION_MODAL to block user interaction with other windows
-        alert.initModality(Modality.APPLICATION_MODAL);
-
-        // Center the alert dialog on the main application window
-        alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
-        alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
-
-        alert.showAndWait();
     }
 
     private String getSeniorCitizen() {

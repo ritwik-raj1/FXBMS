@@ -16,29 +16,24 @@ public class SignupMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        System.out.println("SignupMenuController initialized.");
         addListeners();
     }
 
     private void addListeners() {
-//        System.out.println("Adding listeners to buttons.");
         form1_btn.setOnAction(event -> Form1());
         form2_btn.setOnAction(event -> Form2());
         form3_btn.setOnAction(event -> Form3());
     }
 
     private void Form1() {
-//        System.out.println("Form1 button clicked.");
         Model.getInstance().getViewFactory().getSignupMenuItem().set(SignupMenuOptions.FORM1);
     }
 
     private void Form2() {
-//        System.out.println("Form2 button clicked.");
         Model.getInstance().getViewFactory().getSignupMenuItem().set(SignupMenuOptions.FORM2);
     }
 
     private void Form3() {
-//        System.out.println("Form3 button clicked.");
         Model.getInstance().getViewFactory().getSignupMenuItem().set(SignupMenuOptions.FORM3);
     }
 }

@@ -18,16 +18,6 @@
     -fx-padding: 10;
 }
 
-/*.title_container FontAwesomeIconView {*/
-/*    -fx-fill: #132A13;*/
-/*}*/
-
-/*.title_container Text {*/
-/*    -fx-fill: #000000;*/
-/*    -fx-font-size: 2em;*/
-/*}*/
-
-/* Navigation Section */
 .menu_container {
     -fx-padding: 10 10 10 20;
     -fx-spacing: 20;
@@ -35,7 +25,7 @@
 
 .menu_container Button {
     -fx-pref-height: 40;
-    -fx-pref-width: 120;
+    -fx-pref-width: 140;
     -fx-background-color: #FFFFFF;
     -fx-text-fill: #132A13;
     -fx-font-size: 1.1em;
@@ -52,7 +42,7 @@
 }
 
 .alt_menu_btn {
-    -fx-pref-width: 120;
+    -fx-pref-width: 140;
     -fx-pref-height: 40;
     -fx-background-color: #f9dcc4;
     -fx-text-fill: #001233;
