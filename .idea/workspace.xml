@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c8b00df-4b92-4217-9fb5-7849b51fbd73" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Transaction_Statement.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Transaction_Statement.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/DashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Accounts.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Client/Dashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +162,7 @@
       <workItem from="1706374887305" duration="12770000" />
       <workItem from="1706388853859" duration="354000" />
       <workItem from="1706423828490" duration="8471000" />
-      <workItem from="1706447128049" duration="29073000" />
+      <workItem from="1706447128049" duration="30916000" />
     </task>
     <servers />
   </component>

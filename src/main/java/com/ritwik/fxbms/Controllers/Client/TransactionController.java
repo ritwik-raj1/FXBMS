@@ -59,8 +59,10 @@ public class TransactionController implements Initializable {
                 Timestamp timestamp = resultSet.getTimestamp("date");
                 LocalDateTime dateTime = timestamp.toLocalDateTime();
                 String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                transactions.add("Deposit: Rs. " + amount + " -> " + formattedDateTime);
+//                transactions.add("Deposit: Rs. " + amount + " -> " + formattedDateTime);
+                transactions.add(formattedDateTime +" -> Deposit: Rs. "+ amount);
             }
+            FXCollections.reverse(transactions);
             transaction_listview.setItems(transactions);
         } catch (SQLException e) {
             e.printStackTrace();

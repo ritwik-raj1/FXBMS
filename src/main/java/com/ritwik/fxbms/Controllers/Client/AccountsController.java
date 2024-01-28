@@ -214,8 +214,10 @@ public class AccountsController implements Initializable {
                 Timestamp timestamp = resultSet.getTimestamp("date");
                 LocalDateTime dateTime = timestamp.toLocalDateTime();
                 String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                transactions.add("Withdrawal: Rs. " + amount + " ---> " + formattedDateTime);
+//                transactions.add( + amount + " ---> " + formattedDateTime);
+                transactions.add(formattedDateTime +" -> Withdrawal: Rs. "+ amount);
             }
+            FXCollections.reverse(transactions);
             withdraw_transaction_listview.setItems(transactions);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -41,7 +41,10 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDataOnPageLoad();
-        refresh_btn.setOnAction(event -> totalAmount());
+        refresh_btn.setOnAction(event -> {
+            totalAmount();
+            loadTransactions();
+        });
         loadTransactions();
         money_transfer.setOnAction(event -> performTransaction());
     }
@@ -139,8 +142,11 @@ public class DashboardController implements Initializable {
                 LocalDateTime dateTime = timestamp.toLocalDateTime();
                 String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                 String type = resultSet.getString("type");
-                transactions.add(type + ": Rs. " + amount + " -> " + formattedDateTime);
+//                transactions.add(type + ": Rs. " + amount + " -> " + formattedDateTime);
+                transactions.add(formattedDateTime+" -> "+type+" >>> Rs. "+ amount);
             }
+            // Reverse the order of transactions
+            FXCollections.reverse(transactions);
             transaction_listview.setItems(transactions);
         } catch (SQLException e) {
             e.printStackTrace();
