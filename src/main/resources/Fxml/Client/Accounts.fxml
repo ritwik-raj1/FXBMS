@@ -42,7 +42,7 @@
             </LinearGradient>
          </fill>
       </Text>
-      <TextField fx:id="withdraw_amount_textfield" layoutX="39.0" layoutY="156.0" prefHeight="39.0" prefWidth="321.0" promptText="Withdraw Amount" style="-fx-font-size: 15; -fx-alignment: center;">
+      <TextField fx:id="withdraw_amount_textfield" layoutX="39.0" layoutY="156.0" prefHeight="39.0" prefWidth="321.0" promptText="Withdraw Amount" style="-fx-font-size: 20; -fx-alignment: center;">
          <font>
             <Font size="15.0" />
          </font>

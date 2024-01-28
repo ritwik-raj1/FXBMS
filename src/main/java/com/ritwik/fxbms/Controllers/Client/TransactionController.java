@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
 public class TransactionController implements Initializable {
     public ListView transaction_listview;
     public TextField amount_txtfld;
@@ -38,10 +39,10 @@ public class TransactionController implements Initializable {
                 loadTransactions(); // Update transaction listview
                 amount_txtfld.clear(); // Clear the amount text field
             } catch (NumberFormatException e) {
-                showAlert("Please enter a valid amount.");
+                showAlert("Error","Please enter a valid amount.",(Stage) deposit_btn.getScene().getWindow());
             }
         } else {
-            showAlert("Please enter an amount.");
+            showAlert("Alert!","Please enter an amount.",(Stage) deposit_btn.getScene().getWindow());
         }
     }
 
@@ -58,12 +59,12 @@ public class TransactionController implements Initializable {
                 Timestamp timestamp = resultSet.getTimestamp("date");
                 LocalDateTime dateTime = timestamp.toLocalDateTime();
                 String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-                transactions.add("Deposit: Rs. " + amount + " ---> " + formattedDateTime);
+                transactions.add("Deposit: Rs. " + amount + " -> " + formattedDateTime);
             }
             transaction_listview.setItems(transactions);
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Failed to load transactions.");
+            showAlert("Error!","Failed to load transactions.",(Stage) deposit_btn.getScene().getWindow());
         }
     }
 
@@ -79,29 +80,11 @@ public class TransactionController implements Initializable {
             statement.setString(2, "Deposit"); // Set the transaction type
             statement.setDouble(3, amount); // Set the amount
             statement.executeUpdate();
-            showAlert("Deposit successful.");
+            showAlert("Success!","Deposit successful.",(Stage) deposit_btn.getScene().getWindow());
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlert("Failed to deposit.");
+            showAlert("Error","Failed to deposit.",(Stage) deposit_btn.getScene().getWindow());
         }
     }
 
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        Stage mainWindow = (Stage) deposit_btn.getScene().getWindow();
-
-        // Set the owner of the alert dialog to the main application window
-        alert.initOwner(mainWindow);
-
-        // Set the modality to APPLICATION_MODAL to block user interaction with other windows
-        alert.initModality(Modality.APPLICATION_MODAL);
-
-        // Center the alert dialog on the main application window
-        alert.setX(mainWindow.getX() + mainWindow.getWidth() / 2 - alert.getWidth() / 2);
-        alert.setY(mainWindow.getY() + mainWindow.getHeight() / 2 - alert.getHeight() / 2);
-        alert.showAndWait();
-    }
 }

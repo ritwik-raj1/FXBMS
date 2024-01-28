@@ -69,23 +69,32 @@
 
 /* Transaction View */
 .transaction_listview {
-    -fx-background-color: #EEEEEE;
-    -fx-border-width: 0 0 0 0 ;
-    -fx-border-color: #AAAAAA;
+    /*-fx-background-color: #EEEEEE;*/
+    -fx-padding: 10;
+    -fx-font-size: 15;
+    -fx-border-color: #1d3557;
+    -fx-border-radius: 10;
+    -fx-border-width: 3;
+    -fx-background-radius: 10;
 }
 
-.transaction_listview .scroll-bar:vertical {
-        -fx-scale-x: 0;
-}
 
-.list_cell {
-    -fx-background-color: #EEEEEE;
-    -fx-padding: 15 0 15 0;
-}
+/*.list_cell {*/
+/*    -fx-background-color: #EEEEEE;*/
+/*    -fx-padding: 15 0 15 0;*/
+/*}*/
 
 
 .send_money {
     -fx-border-radius: 10;
     -fx-border-width: 3;
     -fx-border-color: #1d3557;
+}
+
+.send_money Button {
+    -fx-background-radius: 10;
+    -fx-background-color: linear-gradient(to right, #f4a261, #e9c46a);
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
 }

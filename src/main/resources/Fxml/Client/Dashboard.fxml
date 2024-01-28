@@ -17,11 +17,11 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="740.0" prefWidth="850.0" styleClass="dashboard" stylesheets="@../../Styles/Dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ritwik.fxbms.Controllers.Client.DashboardController">
-    <Text fx:id="user_name" layoutX="54.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_name" text="Ritwik" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="28.0" />
+    <Text fx:id="user_name" layoutX="54.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="user_name" text="Ritwik" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="33.0" />
     <Label fx:id="login_date" layoutX="177.0" layoutY="88.0" styleClass="date_lbl" text="Today, Monday, 2024-01-21" AnchorPane.leftAnchor="177.0" AnchorPane.topAnchor="88.0" />
     <Text layoutX="744.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="My Accounts" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
     <Text layoutX="20.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="Latest Transactions" AnchorPane.bottomAnchor="377.0" AnchorPane.leftAnchor="20.0" />
-    <ListView fx:id="transaction_listview" layoutX="14.0" layoutY="370.0" prefHeight="355.0" prefWidth="415.0" style="-fx-border-color: #1d3557; -fx-border-radius: 10; -fx-border-width: 3;" styleClass="transaction_listview" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="20.0" />
+    <ListView fx:id="transaction_listview" layoutX="14.0" layoutY="370.0" prefHeight="355.0" prefWidth="369.0" styleClass="transaction_listview" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="20.0" />
      <AnchorPane layoutX="20.0" layoutY="120.0" prefHeight="200.0" prefWidth="362.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="120.0">
          <Label fx:id="total_account_balance" layoutX="43.0" layoutY="22.0" styleClass="account_balance" text="10 000.00" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="22.0" />
          <Label fx:id="acc_num" layoutX="14.0" layoutY="73.0" prefHeight="22.0" prefWidth="168.0" style="-fx-font-size: 20;" styleClass="account_number" text="****************" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="14.0" />
@@ -176,7 +176,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="money_transfer" layoutX="43.0" layoutY="284.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="290.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(to left, #f4a261, #e9c46a); -fx-font-weight: bold;" text="TRANSFER" textFill="WHITE">
+      <Button fx:id="money_transfer" layoutX="43.0" layoutY="284.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="290.0" text="TRANSFER" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

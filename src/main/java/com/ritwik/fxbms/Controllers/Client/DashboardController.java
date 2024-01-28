@@ -3,23 +3,27 @@ package com.ritwik.fxbms.Controllers.Client;
 import com.ritwik.fxbms.Models.Conn;
 import com.ritwik.fxbms.Models.Model;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 
+import java.math.BigDecimal;
 import java.net.URL;
-import java.text.DecimalFormat;
-import java.util.ResourceBundle;
+import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import static com.ritwik.fxbms.Utils.AlertUtils.showAlert;
 
 public class DashboardController implements Initializable {
     public Text user_name;
@@ -38,6 +42,8 @@ public class DashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadDataOnPageLoad();
         refresh_btn.setOnAction(event -> totalAmount());
+        loadTransactions();
+        money_transfer.setOnAction(event -> performTransaction());
     }
 
     private void loadDataOnPageLoad() {
@@ -70,13 +76,14 @@ public class DashboardController implements Initializable {
             PreparedStatement depositStatement = conn.prepareStatement(depositQuery);
             depositStatement.setString(1, accountNumber);
             ResultSet depositResultSet = depositStatement.executeQuery();
-            double totalDeposit = 0;
+            BigDecimal totalDeposit = BigDecimal.ZERO;
             if (depositResultSet.next()) {
-                totalDeposit = depositResultSet.getLong("total_deposit");
+                totalDeposit = depositResultSet.getBigDecimal("total_deposit");
             }
 
             // Set the total account balance
-            total_account_balance.setText(String.valueOf(totalDeposit));
+            total_account_balance.setText(totalDeposit.toPlainString());
+
 
             // Query to fetch account type
             String accountTypeQuery = "SELECT account_type FROM signup3 WHERE account_number = ?";
@@ -86,7 +93,6 @@ public class DashboardController implements Initializable {
             if (accountTypeResult.next()) {
                 account_type.setText(accountTypeResult.getString("account_type"));
             }
-
 
 
             conn.close();
@@ -106,15 +112,126 @@ public class DashboardController implements Initializable {
             PreparedStatement depositStatement = conn.prepareStatement(depositQuery);
             depositStatement.setString(1, accountNumber);
             ResultSet depositResultSet = depositStatement.executeQuery();
-            double totalDeposit = 0;
+            BigDecimal totalDeposit = BigDecimal.ZERO;
             if (depositResultSet.next()) {
-                totalDeposit = depositResultSet.getLong("total_deposit");
+                totalDeposit = depositResultSet.getBigDecimal("total_deposit");
             }
 
-            total_account_balance.setText(String.valueOf(totalDeposit));
+            // Set the total account balance
+            total_account_balance.setText(totalDeposit.toPlainString());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+    private void loadTransactions() {
+        ObservableList<String> transactions = FXCollections.observableArrayList();
+        try {
+            Connection connection = Conn.getConnection();
+            String query = "SELECT date, type, amount FROM bank WHERE account_number = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, Model.getInstance().getAccountNumber());
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                double amount = resultSet.getDouble("amount");
+                Timestamp timestamp = resultSet.getTimestamp("date");
+                LocalDateTime dateTime = timestamp.toLocalDateTime();
+                String formattedDateTime = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                String type = resultSet.getString("type");
+                transactions.add(type + ": Rs. " + amount + " -> " + formattedDateTime);
+            }
+            transaction_listview.setItems(transactions);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert("Error!", "Failed to load transactions.", (Stage) send_amount.getScene().getWindow());
+        }
+    }
+
+    private void performTransaction() {
+        String loggedInAccountNumber = Model.getInstance().getAccountNumber();
+        String payeeAccountNumber = payee_acc_num.getText().trim();
+        BigDecimal amount = new BigDecimal(send_amount.getText().trim());
+
+        if (payeeAccountNumber.isEmpty() || send_amount.getText().isEmpty()) {
+            showAlert("Error!", "Please enter payee account number and amount.", (Stage) send_amount.getScene().getWindow());
+            return;
+        }
+
+        Connection conn = null; // Declare the connection outside the try block
+        try {
+            conn = Conn.getConnection();
+            conn.setAutoCommit(false); // Start transaction
+
+            // Check if the logged-in user's account has sufficient balance
+            BigDecimal totalDeposit = BigDecimal.ZERO;
+            String depositQuery = "SELECT COALESCE(SUM(IF(type = 'Deposit', amount, 0)), 0) AS total_deposit FROM bank WHERE account_number = ?";
+            PreparedStatement depositStmt = conn.prepareStatement(depositQuery);
+            depositStmt.setString(1, loggedInAccountNumber);
+            ResultSet depositResultSet = depositStmt.executeQuery();
+            if (depositResultSet.next()) {
+                totalDeposit = depositResultSet.getBigDecimal("total_deposit");
+            }
+            BigDecimal totalWithdrawal = BigDecimal.ZERO;
+            String withdrawalQuery = "SELECT COALESCE(SUM(IF(type = 'Withdrawal', amount, 0)), 0) AS total_withdrawal FROM bank WHERE account_number = ?";
+            PreparedStatement withdrawalStmt = conn.prepareStatement(withdrawalQuery);
+            withdrawalStmt.setString(1, loggedInAccountNumber);
+            ResultSet withdrawalResultSet = withdrawalStmt.executeQuery();
+            if (withdrawalResultSet.next()) {
+                totalWithdrawal = withdrawalResultSet.getBigDecimal("total_withdrawal");
+            }
+            BigDecimal currentBalance = totalDeposit.subtract(totalWithdrawal);
+            if (currentBalance.compareTo(amount) < 0) {
+                showAlert("Error!", "Insufficient balance in your account.", (Stage) send_amount.getScene().getWindow());
+                conn.rollback(); // Rollback transaction
+                conn.setAutoCommit(true); // Reset auto-commit to true
+                return;
+            }
+
+            // Add amount as Deposit in payee's account
+            String payeeDepositQuery = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, NOW(), 'Deposit', ?)";
+            PreparedStatement payeeDepositStmt = conn.prepareStatement(payeeDepositQuery);
+            payeeDepositStmt.setString(1, payeeAccountNumber);
+            payeeDepositStmt.setBigDecimal(2, amount);
+            payeeDepositStmt.executeUpdate();
+
+            // Add amount as Withdrawal in logged-in user's account
+            String userWithdrawalQuery = "INSERT INTO bank (account_number, date, type, amount) VALUES (?, NOW(), 'Withdrawal', ?)";
+            PreparedStatement userWithdrawalStmt = conn.prepareStatement(userWithdrawalQuery);
+            userWithdrawalStmt.setString(1, loggedInAccountNumber);
+            userWithdrawalStmt.setBigDecimal(2, amount);
+            userWithdrawalStmt.executeUpdate();
+
+            conn.commit(); // Commit transaction
+            conn.setAutoCommit(true); // Reset auto-commit to true
+
+            // Reload data
+            loadDataOnPageLoad();
+            loadTransactions();
+            showAlert("Success!", "Payement of Rs "+amount+" is Successfull.", (Stage) send_amount.getScene().getWindow());
+            send_amount.clear();
+            payee_acc_num.clear();
+        } catch (SQLException e) {
+            try {
+                if (conn != null) {
+                    conn.rollback(); // Rollback transaction if an error occurs
+                    conn.setAutoCommit(true); // Reset auto-commit to true
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+            showAlert("Error!", "Failed to perform transaction.", (Stage) send_amount.getScene().getWindow());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close(); // Close the connection in the final block
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+
 }
