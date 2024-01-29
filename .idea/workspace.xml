@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c8b00df-4b92-4217-9fb5-7849b51fbd73" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d6b87dfb-a669-4d56-8213-343abf6775af.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d6b87dfb-a669-4d56-8213-343abf6775af.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/AccountsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ritwik/fxbms/Controllers/Client/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Styles/Dashboard.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +65,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ritwik Raj/Documents/Projects/fxbms&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ritwik Raj/Documents/GitHub/FXBMS&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -163,6 +163,8 @@
       <workItem from="1706388853859" duration="354000" />
       <workItem from="1706423828490" duration="8471000" />
       <workItem from="1706447128049" duration="30916000" />
+      <workItem from="1706519782394" duration="16000" />
+      <workItem from="1706520831843" duration="704000" />
     </task>
     <servers />
   </component>
