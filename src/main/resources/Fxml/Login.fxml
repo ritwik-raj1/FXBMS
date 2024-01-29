@@ -128,7 +128,7 @@
       </font>
    </Text>
    <FontIcon iconColor="#0e827a" iconLiteral="far-hand-point-down" iconSize="30" layoutX="472.0" layoutY="605.0" wrappingWidth="32.55560302734375" />
-   <VBox layoutX="62.0" layoutY="23.0" prefHeight="150.0" prefWidth="150.0" styleClass="bg_image" />
+   <VBox layoutX="62.0" layoutY="23.0" prefHeight="150.0" prefWidth="165.0" styleClass="bg_image" />
    <padding>
       <Insets left="10.0" right="10.0" top="10.0" />
    </padding>
