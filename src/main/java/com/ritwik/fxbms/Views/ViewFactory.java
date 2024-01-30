@@ -137,7 +137,7 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("FINANCIAL HUB MANAGER");
-        Image icon = new Image(getClass().getResourceAsStream("/Images/bank2.png"));
+        Image icon = new Image(getClass().getResourceAsStream("/Images/bank1.png"));
         stage.getIcons().add(icon);
         stage.setResizable(resizable);
         stage.show();

@@ -1,4 +1,8 @@
+.run
 .idea
 .mvn
 target
 /src/main/java/com/ritwik/fxbms/Utils/passKey.java
+out
+target
+Transaction_Statement.pdf
