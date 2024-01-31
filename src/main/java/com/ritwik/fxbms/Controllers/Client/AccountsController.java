@@ -240,6 +240,7 @@ public class AccountsController implements Initializable {
 
             if (rowsUpdated > 0) {
                 showAlert("Success!","PIN reset successful.",(Stage) reset_pin_btn.getScene().getWindow());
+                reset_pin_textfield.clear();
             } else {
                 showAlert("Error!","Failed to reset PIN. Please try again.",(Stage) reset_pin_btn.getScene().getWindow());
             }
