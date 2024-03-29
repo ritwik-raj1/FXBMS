@@ -92,7 +92,7 @@ public class AccountsController implements Initializable {
                 contentStream.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 20);
                 contentStream.beginText();
                 contentStream.newLineAtOffset((page.getMediaBox().getWidth() - 100) / 2, page.getMediaBox().getHeight() - 50);
-                contentStream.showText("Secure-BMS");
+                contentStream.showText("SecureBankX");
                 contentStream.endText();
 
                 // Add user details

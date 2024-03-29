@@ -8,7 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+
+import java.util.Objects;
 
 public class ViewFactory {
  //Client Views
@@ -24,6 +27,7 @@ public class ViewFactory {
     private AnchorPane form1View;
     private AnchorPane form2View;
     private AnchorPane form3View;
+    public BorderPane stocksView;
     public ViewFactory(){
         this.clientSelectedMenuItem = new SimpleObjectProperty<>();
         this.signupMenuItem = new SimpleObjectProperty<>();
@@ -123,7 +127,6 @@ public class ViewFactory {
 
     public void showLoginWindow() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Login.fxml"));
-        Stage stage = new Stage();
         createStage(loader, false);
     }
 
@@ -137,7 +140,7 @@ public class ViewFactory {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setTitle("FINANCIAL HUB MANAGER");
-        Image icon = new Image(getClass().getResourceAsStream("/Images/bank1.png"));
+        Image icon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/bank1.png")));
         stage.getIcons().add(icon);
         stage.setResizable(resizable);
         stage.show();

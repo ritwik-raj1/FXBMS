@@ -146,7 +146,7 @@ public class DashboardController implements Initializable {
 
                 // If payeeAccNumber is not null, then it's a transaction involving another account
                 if (payeeAccNumber != null) {
-                    transactions.add(formattedDateTime + " -> " + type + " > Rs. " + amount + " to Account: " + payeeAccNumber);
+                    transactions.add(formattedDateTime + " -> " + "Transfered" + " > Rs. " + amount + " to Account: " + payeeAccNumber);
                 } else {
                     transactions.add(formattedDateTime + " -> " + type + " > Rs. " + amount);
                 }

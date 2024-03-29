@@ -93,9 +93,6 @@ public class LoginController implements Initializable {
             return false;
         }
     }
-
-
-
     private void onSignup() {
         Stage stage = (Stage) adminbtn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
@@ -117,7 +114,7 @@ public class LoginController implements Initializable {
                 sendOTP(email, expectedOTP);
                 otpVerified = false; // Reset OTP verification status
             } else {
-                showAlert("Error!","Email and account number do not match. ❌",(Stage) login_btn.getScene().getWindow());
+                showAlert("Error!","Either Email or account number do not match. ❌",(Stage) login_btn.getScene().getWindow());
             }
         }
     }
@@ -178,7 +175,7 @@ public class LoginController implements Initializable {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-            message.setSubject("🏦 Secure-BMS: OTP Verification");
+            message.setSubject("🏦 SecureBankX: OTP Verification");
             message.setText("Thank you for choosing Secure-BMS for your banking needs. Your security is our priority.\n" +
                     "\n" +
                     "To complete the login process and ensure the security of your account, please use the following OTP (One-Time Password):\n" +
@@ -189,7 +186,7 @@ public class LoginController implements Initializable {
                     "\n" +
                     "Best Regards,\n" +
                     "Ritwik Raj\n"+
-                    "CEO - Secure-BMS");
+                    "CEO - SecureBankX");
             Transport.send(message);
 
             showAlert("Hurray!","OTP sent successfully to your email.",(Stage) login_btn.getScene().getWindow());

@@ -17,6 +17,7 @@ public class ClientMenuController implements Initializable {
     public Button profile_btn;
     public Button logout_btn;
     public Button report_btn;
+    public Button stock_btn;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
