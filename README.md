@@ -38,3 +38,14 @@ Secure-BMS is an advanced Java-based Bank Management System designed to provide 
 - **Java Swing:** Empowers the creation of an engaging graphical user interface.
 - **JavaMail API:** Facilitates secure email communication for OTP delivery.
 - **JDBC (Java Database Connectivity):** Enables interaction with the underlying database for user authentication.
+
+![Screenshot of the SecureBankX](./src/main/01.Login.jpeg)
+![Signup1l](./src/main/02.SecureBanX_ A Java Project.jpeg)
+![Signup2l](./src/main/03.SecureBanX_ A Java Project.jpeg)
+![2FA](./src/main/04.SecureBanX_ A Java Project.jpeg)
+![2FA_EmailOTP](./src/main/05.SecureBanX_ A Java Project.jpeg)
+![Dashboard](./src/main/06.SecureBanX_ A Java Project.jpeg)
+![Dashboard2](./src/main/07.SecureBanX_ A Java Project.jpeg)
+![Dashboard3](./src/main/08.SecureBanX_ A Java Project.jpeg)
+![Dashboard4](./src/main/09.SecureBanX_ A Java Project.jpeg)
+![Statement](./src/main/10.SecureBanX_ A Java Project.jpeg)
