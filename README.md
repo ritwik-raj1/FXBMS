@@ -1,9 +1,9 @@
-# Secure-BMS (Bank Management System) Project 🏦💻
+# SecureBankX (A Secure Bank Management System) Project 🏦💻
 
 ## Checkout the Demo Video
 [Watch on YouTube](https://www.youtube.com/watch?v=xssLBiUdnMg)
 
-Secure-BMS is an advanced Java-based Bank Management System designed to provide robust security through multi-factor authentication. This project leverages cutting-edge technologies and incorporates features such as email-based OTP (One-Time Password) verification for enhanced security.
+SecureBankX is an advanced Java-based Bank Management System designed to provide robust security through multi-factor authentication. This project leverages cutting-edge technologies and incorporates features such as email-based OTP (One-Time Password) verification for enhanced security.
 
 ## Features 🚀
 
